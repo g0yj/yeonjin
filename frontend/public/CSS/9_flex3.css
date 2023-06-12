@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.flexbox1, .flexbox2{
+	display: flex;
+	width: 200px;
+	border: 1px solid red;
+}
+
+.flexbox1{flex-wrap: wrap; align-items: flex-start;} /*자식요소들의 크기가 더 커지면 자동 줄바꿈*/
+.flexbox2{align-items: center;}
+
+.box1 , .box2 , .box3, .box4, .box5, .box6{
+	background-color: blue;
+	color: white;
+	border: solid 1px white;
+}
+
+.box1{width: 50px; height: 50px;}
+.box2{width: 100px; height: 100px;}
+
+.box4{width: 50px; height: 80px;}
+.box5{width: 100px; height: 150px;}
+

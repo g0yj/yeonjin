@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.box{
+	border: 1px solid black;
+	width: 100px;
+}
+
+/*1. 가로배치할 부모요소 flex
+	직계만 가능 */
+.flex_box1{
+	border: 1px solid red;
+	display: flex;
+	flex-direction: row; 
+	padding:5px;
+	
+}
+
+.flex_box2{
+	border: 1px solid red;
+	display: flex;
+	flex-direction: colunm; 
+	padding:5px;	
+}
+
+.flex_box3{
+	border: 1px solid red;
+	display: flex;
+	flex-direction: row-reverse; 
+	padding:5px;
+	
+}
+.flex_box4{
+	border: 1px solid red;
+	display: flex;
+	flex-direction: colunm-reverse; 
+	padding:5px;
+	
+}
+
