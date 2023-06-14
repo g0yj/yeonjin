@@ -61,6 +61,19 @@ li{list-style-type: none;}
 	
 }
 
+#bottom{
+	display: flex; justify-content: center;
+	background-color: #F9F9F9;
+	margin-right: 100px;
+}
+
+.box{display: flex;
+	 margin: 100px 100px;	
+	 background-color: white;
+}
+
+
+
 
 
 /* 푸터 시작*/
