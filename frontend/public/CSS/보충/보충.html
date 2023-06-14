@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<link href="보충.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- 전체, 헤더, 본문, 푸터 나누기 // form은 본문에만 적용 // 1200px 사용 // -->
+
+	<div id="wrap"> <!-- 웹 전체 레이아웃 시작 -->
+	
+		<div id="header"> <!-- 헤더 시작 -->
+			<div class="h_logo"> 
+				<a href="http://192.168.17.24:8080/frontend/%EA%B3%BC%EC%A0%9C/2%EC%9D%B8%EA%B3%BC%EC%A0%9C/index.html">
+				<img src="img/logo.jpg">
+				</a>
+			</div>
+			<div class="h_menu">
+				<ul>
+					<li><a href="http://192.168.17.24:8080/frontend/%EA%B3%BC%EC%A0%9C/2%EC%9D%B8%EA%B3%BC%EC%A0%9C/intro.html">
+					스튜디오 소개</a></li>
+					<li><a href="http://192.168.17.24:8080/frontend/%EA%B3%BC%EC%A0%9C/2%EC%9D%B8%EA%B3%BC%EC%A0%9C/reservation.html">스튜디오 예약</a></li>
+					<li><a href="#">블로그</a></li>
+					<li><a href="#">프로 갤러리</a></li>
+					<li><a href="#">오시는 길</a></li>
+				
+				</ul>
+			
+			</div> 
+		</div> <!-- 헤더 끝 -->
+		
+		<img id="img_main"> <!-- 메인이미지 -->	
+		
+		
+<!-- 본문시작 -->		
+	<div id="content"> <!-- 본문 시작, flex로 colom,space 속성 -->
+	
+<!-- 상단 컨텐츠 시작 -->	
+		<div id="상단컨텐츠"><!-- flex, space -->
+			<div class="왼쪽 상단"><img src="img/icon1.png"></div>
+			<div class="오른쪽상단">
+				<ul>
+					<li class="큰글자">예약안내</li><!-- 글자크기, 굵기 -->
+					<li class="작은글자">스튜디오 대여는 사전에 인터넷 예약을 하셔야합니다. 
+									예약은 1일 이전까지 가능합니다</li>	
+				</ul>
+			</div>	
+
+
+		<div id="상단컨텐츠"><!-- flex, space -->
+			<div class="왼쪽 상단"><img src="img/icon2.png"></div>
+			<div class="오른쪽상단">
+				<ul>
+					<li class="큰글자">포토 갤러리</li><!-- 글자크기, 굵기 -->
+					<li class="작은글자">취업 사진, 가족 사진, 프로필 사진, 우정사진 등 개인 또는 단체가 이용할 수 있습니다.</li>	
+				</ul>
+			</div>			
+		
+		</div>
+	
+		</div>
+	
+	
+	
+	
+<!-- 하단시작 -->
+	
+	<div id="하단컨텐츠" > <!-- 하단 전체  flex-->
+		<div class="box1"><!-- 4개 가로 배치를 위한 클래스 . 가로배치, space -->
+			<div><img src="img/image1.jpg"></div>
+			<ul>
+				<li class="큰글자">촬영 스튜디오</li>
+				<li class="작은글자">카메라, 조명 등 촬영 장비 완비</li>
+			</ul>
+		</div><!--flex-row , space  -->
+		
+		<div class="box1"><!-- 4개 가로 배치를 위한 클래스 . 가로배치, space -->
+			<div><img src="img/image2.jpg"></div>
+			<ul>
+				<li class="큰글자">촬영 스튜디오</li>
+				<li class="작은글자">카메라, 조명 등 촬영 장비 완비</li>
+			</ul>
+		</div><!--flex-row , space  -->
+		
+		<div class="box1"><!-- 4개 가로 배치를 위한 클래스 . 가로배치, space -->
+			<div><img src="img/image3.jpg"></div>
+			<ul>
+				<li class="큰글자">촬영 스튜디오</li>
+				<li class="작은글자">카메라, 조명 등 촬영 장비 완비</li>
+			</ul>
+		</div><!--flex-row , space  -->
+		
+		<div class="box1"><!-- 4개 가로 배치를 위한 클래스 . 가로배치, space -->
+			<div><img src="img/image4.jpg"></div>
+			<ul>
+				<li class="큰글자">촬영 스튜디오</li>
+				<li class="작은글자">카메라, 조명 등 촬영 장비 완비</li>
+			</ul>
+		</div><!--flex-row , space  -->
+		
+	
+	</div>
+	
+		<!-- 푸터 시작 -->
+	
+	 	<div id="footerback"> <!-- 푸터 시작 -->
+	 		<div class="ft_center"> <!-- 푸터 센터 시작 -->
+	 			<div class="ft_left"> <!-- 푸터 왼쪽 시작 -->
+	 				<ul>
+	 					<li>고객센터</li>
+	 					<li>TEL : 031-123-1234</li>
+	 				</ul>
+	 			</div><!-- 푸터 왼쪽 끝 -->
+	 			
+	 			<div class="ft_center1"> <!--푸터 가운데 시작 -->
+					<div class="ft_info"> <!-- 회사소개 시작 -->
+						<a href="#">회사소개</a> <span class="aline">|</span>
+						<a href="#">개인정보처리방침</a> <span class="aline">|</span>
+						<a href="#">이용약관</a> <span class="aline">|</span>
+						<a href="#">제휴안내</a>
+					</div><!-- 회사소개 끝 -->
+
+					<div> <!-- 회사주소 -->
+						<ul>
+							<li>주소 : 경기도 안산시 한대앞역 123</li>
+							<li>email : thEodthEod@ezen.com</li>
+							<li>COPYFIGHT (C) The tmxbeldh. ALL RIGHT RESERVED.</li>			
+						</ul>
+					</div> <!-- 회사주소 끝 -->
+
+
+	 			</div> <!-- 푸터 가운데 끝 -->
+	 			
+	 			<div class="ft_right"><!-- 푸터 오른쪽 시작 -->
+					<div>
+						<a href="#">
+						 <img src="img/facebook.png">
+						</a>
+						<a href="#">
+		<!-- 푸터 시작 -->
+	
+	 	<div id="footerback"> <!-- 푸터 시작 -->
+	 		<div class="ft_center"> <!-- 푸터 센터 시작 -->
+	 			<div class="ft_left"> <!-- 푸터 왼쪽 시작 -->
+	 				<ul>
+	 					<li>고객센터</li>
+	 					<li>TEL : 031-123-1234</li>
+	 				</ul>
+	 			</div><!-- 푸터 왼쪽 끝 -->
+	 			
+	 			<div class="ft_center1"> <!--푸터 가운데 시작 -->
+					<div class="ft_info"> <!-- 회사소개 시작 -->
+						<a href="#">회사소개</a> <span class="aline">|</span>
+						<a href="#">개인정보처리방침</a> <span class="aline">|</span>
+						<a href="#">이용약관</a> <span class="aline">|</span>
+						<a href="#">제휴안내</a>
+					</div><!-- 회사소개 끝 -->
+
+					<div> <!-- 회사주소 -->
+						<ul>
+							<li>주소 : 경기도 안산시 한대앞역 123</li>
+							<li>email : thEodthEod@ezen.com</li>
+							<li>COPYFIGHT (C) The tmxbeldh. ALL RIGHT RESERVED.</li>			
+						</ul>
+					</div> <!-- 회사주소 끝 -->
+
+
+	 			</div> <!-- 푸터 가운데 끝 -->
+	 			
+	 			<div class="ft_right"><!-- 푸터 오른쪽 시작 -->
+					<div>
+						<a href="#">
+						 <img src="img/facebook.png">
+						</a>
+						<a href="#">
+						<img src="img/blog.png">
+						</a>
+						<a href="#">
+						<img src="img/instagram.png">
+						</a>
+					
+					</div>
+	 			</div> <!-- 푸터 오른쪽 끝 -->
+	 		
+		
+	 		</div> <!-- 푸터 센터 끝 -->
+ 	
+	 	</div> <!-- 푸터 끝 -->	
+	 	
+	<!-- 푸터 끝 -->				<img src="img/blog.png">
+						</a>
+						<a href="#">
+						<img src="img/instagram.png">
+						</a>
+					
+					</div>
+	 			</div> <!-- 푸터 오른쪽 끝 -->
+	 		
+		
+	 		</div> <!-- 푸터 센터 끝 -->
+ 	
+	 	</div> <!-- 푸터 끝 -->	
+	 	
+	<!-- 푸터 끝 -->
+	
+	
+	
+	
+	
+	</div> <!-- 웹 전체 레이아웃 끝 -->
+		
+
+</body>
+</html>
