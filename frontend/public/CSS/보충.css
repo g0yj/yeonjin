@@ -1,3 +1,5 @@
+
+
 @charset "UTF-8";
 /* 전체 설정 */
 *{padding: 0px; margin: 0px; font-family: "맑은 고딕";}
@@ -24,6 +26,7 @@ li{list-style-type: none;}
 	display: flex;
 	flex-direction:row;
 	justify-content: flex-start; 
+	flex-direction: column;
 }
 
 .큰글자{
@@ -47,3 +50,5 @@ li{list-style-type: none;}
 	flex-direction: row;
 	justify-content: space-between;
 }
+
+
