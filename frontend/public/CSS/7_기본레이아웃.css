@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 #wrap{
 	width: 1200px;	/* 가로사이즈 */
 	margin: 0 auto;	/* 구역/박스 가로 가운데정렬*/
@@ -24,3 +22,4 @@
 #footer{
 	background-color: black;
 	height: 200px;
+}

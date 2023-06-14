@@ -1,18 +1,15 @@
-@charset "UTF-8";
-
-
 /* CSS 기본값 설정 */
 *{ padding: 0px; margin: 0px; }/*기본 여백 제거*/
 li{ list-style-type: none;}/*글머리 제거*/
 
 /* 외부 웹폰트 호출 : 눈누 */
 @font-face {
-    font-family: 'GoryeongStrawberry';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/GoryeongStrawberry.woff2') format('woff2');
-    font-weight: normal;
+    font-family: 'TTWanjudaedunsancheB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
-/* 호출된 웹폰트 적용 위에 있는 @font-face에 있는 font-family */
+/* 호출된 웹폰트 적용 */
 *{ font-family: 'TTWanjudaedunsancheB' }
 
 /* 헤더 구역 */
@@ -41,7 +38,7 @@ li{ list-style-type: none;}/*글머리 제거*/
 /* 대표이미지 */
 #main_img{
 	width:100%; height:250px;			/* 요소의 크기 */
-	background-image:url("img/main_img"); /* 요소의 배경 이미지 = 요소 크기 필수 */
+	background-image:url("img/main_img.png"); /* 요소의 배경 이미지 = 요소 크기 필수 */
 	background-repeat:no-repeat; /* 자동채우기[기본값] repeat vs no-repeat */
 	background-position: center; /* 배경 위치 */
 	margin: 20px 0px;
@@ -96,4 +93,3 @@ li{ list-style-type: none;}/*글머리 제거*/
 .main_logo{
 	text-align: center;
 }
-
