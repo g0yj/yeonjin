@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* 전체 설정 */
+*{padding: 0px; margin: 0px; font-family: "맑은 고딕";}
+
+/* a태그 초기설정 */
+a{color: black; text-decoration: none;}
+
+/* 글머리 제거 */
+li{list-style-type: none;} 
+
+-----
+
+
+#img_main{
+	width: 100%; height:500px;
+	background-image: url("img/main.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#content{ 
+	display: flex;
+	flex-direction: column;	
+}
+
+#top_content{
+	display: flex;
+	justify-content: space-between;
+}
+
+.top_left{
+	display: flex;
+	flex-direction:row;
+	justify-content: flex-start;
+}
+
+.icon1{
+	background-image: url("img/icon1.jpg");
+	
+}
+
+.icon2{
+	background-image: url("img/icon2.jpg");
+	
+}
