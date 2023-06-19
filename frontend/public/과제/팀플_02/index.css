@@ -72,10 +72,10 @@ li{list-style-type: none;}
 }
 
 .box1{width:1200px; display: flex;
-		margin: 0 auto;
+		margin: 0 auto ;
 		align-items: center;
 		justify-content: space-between;
-		padding: 30px;
+		padding: 50pxpx;
 		}
 
 
@@ -83,7 +83,7 @@ li{list-style-type: none;}
 	flex-direction:column;	
 	 background-color: white;
 	 width: 270px;
-	 margin-bottom: 20px;
+	 margin: 20px;
 	 
 }
 
@@ -112,6 +112,7 @@ li{list-style-type: none;}
 	color: white;
 	margin-top: 10px;
 }
+
 
 
 
