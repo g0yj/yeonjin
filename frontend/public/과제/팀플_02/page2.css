@@ -118,3 +118,27 @@ li{list-style-type: none;}
 .bottom{ display: flex; justify-content: space-between;}
 
 .bottom img{margin-left: 70px;}
+
+
+/*ÇªÅÍ*/
+/* ÇªÅÍ ½ÃÀÛ*/
+
+#footerback{
+	width:100%;
+	height:150px;
+	background-color:#282B31;
+	padding-top: 30px;
+}
+
+.ft_info a{
+	color: white; 
+}
+
+.ft_center{ 
+	display: flex;
+	justify-content: space-between;
+	width: 1200px;
+	margin: 0 auto;
+	color: white;
+	margin-top: 10px;
+}
