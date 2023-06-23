@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.box{
+	border: solid 3px;
+	height:500px;
+	width:400px;
+	margin: 20px auto;
+	border-color: #F0F0F0;
+	padding: 100px;
+	background-color: #C6F0F0;
+	background-clip: content-box;
+	
+	
+}
+
+.input{
+	border-bottom: solid 2px;
+	border-color: #F0F0F0;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.radio{
+	height: 50px;
+	width: 400px;
+}
+
+.click1{
+	height:50px;
+	background-color: yellow;	
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.click2{
+	height:50px;
+	background-color: #F0F0F0;
+	text-align: center;
+}
+
+.click3{
+	border-right: solid 1px;
+	border-color: #F0F0F0;
+	
+}

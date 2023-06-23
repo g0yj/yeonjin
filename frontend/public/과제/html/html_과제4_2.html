@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form>
+	<fieldset>
+		<legend>삼성제품 이용 만족도 조사</legend>
+	<table>
+		<tr>
+			<th>
+				<table>
+					<tr>
+						<th>이름</th>
+						<td><input type="text" placeholder="홍길동"></td>
+					</tr>
+					<tr>
+						<th>연령대</th><td>
+						<select>
+							<option>10대</option>
+							<option>20대</option>
+							<option>30대</option>
+						</select>
+					</tr>
+					<tr>
+						<th>성별</th>
+						<td><input type="radio" name="성별"> 여자 <input type="radio" name="성별">남자</td>
+					</tr>
+					</table>		
+			
+			</th>
+				
+			<th>
+				<img src="삼성이미지.png" style="width:200px;height:100px">
+			</th>
+		</tr>
+	</table>
+	<hr>
+
+	<P>
+		질문1. 현재 사용중인 삼성 제품을 모두 고르게요<br>
+		<input type="checkbox">TV
+		<input type="checkbox">냉장고
+		<input type="checkbox">에어컨
+		<input type="checkbox">청소기
+		<input type="checkbox">핸드폰
+	</P>
+
+	<p>
+		질문2. 삼성 TV를 사용중이시라면 제품에 대해 얼마나 만족하나<br>
+		<input type="radio" name="만족도">5점
+		<input type="radio" name="만족도">4점
+		<input type="radio" name="만족도">3점
+		<input type="radio" name="만족도">2점
+		<input type="radio" name="만족도">1점
+		<input type="radio" name="만족도">미사용
+	</p>
+
+	<p>
+		질문3. 삼성 냉장고를 사용중이시라면 제품에 대해 얼마나 만족하나<br>
+		<input type="radio" name="만족도1">5점
+		<input type="radio" name="만족도1">4점
+		<input type="radio" name="만족도1">3점
+		<input type="radio" name="만족도1">2점
+		<input type="radio" name="만족도1">1점
+		<input type="radio" name="만족도1">미사용
+	</p>
+
+	<hr>
+
+	<h4>건의사항</h4>
+	<textarea rows="20" cols="50"></textarea><a></a>
+	<p>날짜선택<input type="date"></p>
+	
+	</fieldset>
+</form>
+
+<input type="submit" value="제출">     <input type="reset" value="재작성">
+</body>
+</html>

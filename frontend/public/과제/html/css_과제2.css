@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.titleNum{
+	font-size: 50px;
+	font-weight: 15px;
+	color: yellow;
+}
+
+.box{
+	background-color: skyblue;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px
+}
+
+.font{
+	color: white;
+	
+}
+
+.fontH{
+	color: yellow;
+	 font-weight: 10px;
+}

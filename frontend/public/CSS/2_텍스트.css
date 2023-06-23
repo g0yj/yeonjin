@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+*{
+	font-family: "궁서";
+	color: blue;
+}
+
+.title{
+	font-size: 30px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.content{
+	font-family: "굴림";
+	color: black;
+	word-spacing: 5px;
+	letter-spacing: 2px;
+	line-height: 200%;
+	
+}
+
+.writer{
+	text-align: center;
+	text-decoration: underline overline;
+	text-shadow: 1px  2px 3px orange;
+	color: red;
+	color: #e8e8e8;  /*헥사[16진수]*표기법*/
+	color: raba(251, 247, 17); /*RGB vs raba 색상*/
+	
+}
