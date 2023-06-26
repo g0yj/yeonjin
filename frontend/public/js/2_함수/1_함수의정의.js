@@ -4,7 +4,7 @@
  function 함수1(){      }// 인수 x 반환 x
  function 함수2(x){}     // 인수(x=임의의인수,매개변수명), 반환 x 
  function 함수3(x,y,z){}   // 인수 다수 (,로 구분) , 반환 x
- function 함수4(x,y,z){   return 3;} // 인수 있음, 반환간 없음 ->함수 종료
+ function 함수4(x,y,z){   return 3;} // 인수 있음, 반환값 있음 ->함수 종료
  function 함수5() {   return 5;}  // 인수 없음, 반환값 있음-> 함수 종료
  function 함수6(){    return;}  // 인수 없음, 반환값 = 단순 함수 종료 역할
  
