@@ -1,23 +1,18 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+/* ì „ì²´ ì„¤ì • */
+*{padding: 0px; margin: 0px; font-family: "ë§‘ì€ ê³ ë”•";}
 
-
-/*Çì´õ, ÇªÅÍ, º»¹®: ÃÖº´Ã¶*/
-
-/* ÀüÃ¼ ¼³Á¤ */
-*{padding: 0px; margin: 0px; font-family: "¸¼Àº °íµñ";}
-
-/* aÅÂ±× ÃÊ±â¼³Á¤ */
+/* aíƒœê·¸ ì´ˆê¸°ì„¤ì • */
 a{color: black; text-decoration: none;}
 
-/* ±Û¸Ó¸® Á¦°Å */
-li{list-style-type: none;}
 
 
-/*Çì´õ½ÃÀÛ*/
+/* ê¸€ë¨¸ë¦¬ ì œê±° */
+li{list-style-type: none;} 
 
 #header{
 	
-	width : 1200px;  /* pcÀ¥ ±âÁØ ±ÇÀå »çÀÌÁî 1100~1300px; */
+	width : 1200px;  /* pcì›¹ ê¸°ì¤€ ê¶Œì¥ ì‚¬ì´ì¦ˆ 1100~1300px; */
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
@@ -30,7 +25,7 @@ li{list-style-type: none;}
 .h_menu li{ display: inline-block; padding: 0px 20px;}
 
 
-
+/* ë³¸ë¬¸ ì‹œì‘ */
 
 
 
@@ -82,49 +77,29 @@ li{list-style-type: none;}
 .main_message2{
 	width: 1200px; text-align: center; margin: 0 auto; 	position: relative; 
 	}
-/*Çì´õ³¡*/
 
-/*¸ŞÀÎ ÀÌ¹ÌÁö*/
 
-#main_img_wrap{width:100%;
-				display:flex;
-				justify-content:center;
-				margin-bottom:100px;
-				position:relative;}
-				
-#main_img_wrap img{
-	width:80%;
-	vertical-align: middle;
-	
-	
+/* ëŒ€í‘œ ì´ë¯¸ì§€ */
+
+#main_img{
+	width : 100%;
+	height : 350px; /* ì‚¬ì´ì¦ˆê°€ ìˆì–´ì•¼ ë°±ê·¸ë¼ìš´ë“œ ì´ë¯¸ì§€ê°€ ë“¤ì–´ê° */
+	background-image: url("img/sub_intro.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+.position{
+	position: relative; /* ìƒëŒ€ ìœ„ì¹˜ */
+	width: 1200px;
+	height : 100px;
+	margin: 0 auto;
 }
 
-.main_text{position:absolute;
-			text-align:center;
-			color: white;
-			margin-top: 130px; }
 
-/*º»¹® ½ÃÀÛ*/
+ 
 
-#content{width : 1200px; margin: 0 auto;
-		display: flex; flex-direction: column;
-		}
-
-#bottom_back{width: 100%; height: 500px;
-			 background-color: #EEEEEE; }
-
-.top{ display: flex; justify-content: space-between;
-	 margin-bottom: 100px;}
-
-.top img{margin-right: 70px;}
-
-.bottom{ display: flex; justify-content: space-between;}
-
-.bottom img{margin-left: 70px;}
-
-
-/*ÇªÅÍ*/
-/* ÇªÅÍ ½ÃÀÛ*/
+/* í‘¸í„° ì‹œì‘*/
 
 #footerback{
 	width:100%;
