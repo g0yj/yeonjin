@@ -34,7 +34,8 @@
 	 let buttonHTML=``
 	 
 	 // i번째 버튼 생성. i번째 출력된 버튼 클릭 시 i번째 출력된 숫자를 숫자버튼()함수에 전달
-	 for(let i=1;i<=45;i++){
+	 for(let i=1;i<=45;i++){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+		                                                                                                                      
 		 buttonHTML+=`<button onclick="숫자버튼(${i})">${i}</button>`
 	 
 		//만약 i가 5의 배수라면 (5개마다 한줄 띄어)
