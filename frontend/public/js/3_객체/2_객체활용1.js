@@ -1,21 +1,21 @@
+
+
+let 회원리스트=[]  //객체 하나 하나를 배열[]로 받음. 회원리스트[0]에는 아이디,비밀번호 묶인 객체가 들어감
+
 //1. 등록함수 (회원가입 버튼 클릭할 때)
-
-let 회원리스트=[]  //1-3번에서 말한 거. 모든 함수에 접근할 수 있는 배열 선언
-
-
 function 등록(){console.log('등록()실행')
 	//1-1 입력값 가져오기
 	let mid= document.querySelector('#mid').value ; console.log(mid);
 	let mpwd= document.querySelector('#mpwd').value ; console.log(mpwd);
-	arguments
-		//유효성검사1
-		if(mid==''||mpwd==''){// return으로 받을 수도 있음. 여기선 if-else로 하겠음 
-			alert('[회원가입실패]: 회원정보 모두 입력해주세요')
-		} else{//공백이 아니면 , 유효성검사2
-				if(mid.length<8||)}
+
+		//유효성검사1 공백
+		if(mid==''||mpwd==''){ 
+			alert('[회원가입실패]: 회원정보 모두 입력해주세요'); return;} // 유효성검사1이 아니라면 아래로 내려갈 필요 없으니까 함수 자체를 강제종료
+		//아이디,비밀번호길이
+				if(mid.length<8||mpwd.length<8){alert('길이조절하셈'); return;}
 
 	//1-2 객체담기 (입력된 데이터(mid,mpwd)를 {}안에서 속성명(아이디,비밀번호)붙여 저장)
-	let member={아이디: mid, 비밀번호: mpwd}
+	let member={아이디: mid, 비밀번호: mpwd} //객체화
 	console.log(member)
 	
 	//1-3 등록할때 (함수가 실행될 )마다 객체 생성되고 '}'가 끝나면 사라짐.
@@ -35,7 +35,7 @@ function 로그인(){console.log('로그인()실행')
 	let mpwd2= document.querySelector('#mpwd2').value ; console.log(mpwd2);
 	//2-2 입력된 값이 존재하는지 검사
 		
-		//로그인 상태 저장 변수
+		//로그인 상태 저장 변수(for문 속 if의 상태를 저장해주는 변수)
 		let login=false;
 		//-회원리스트(전체) 중에서 회원1명(1개씩)꺼내서 검사하는데 아이디와 비밀번호 일치 찾기
 		for(let i=0; i<회원리스트.length ; i++){
