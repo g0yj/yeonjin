@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#id{display: flex; flex-direction: column;}
+
+/*접속 페이지 회원가입/로그인으로 나누기*/
+#access{display: flex; justify-content: flex-start;}
+
+/*글작성/ 총 게시물 나누기*/
+#write{display: flex; justify-content: space-between;}
