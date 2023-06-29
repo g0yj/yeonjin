@@ -11,12 +11,13 @@
 
 
 <!-- 첫번째 페이지 -->	
-	<div id="onWrite">
+	<div >
+		<h1>글쓰기 페이지</h1>
 		작성자: <input id="writer" type="text"><br>
 		비밀번호: <input id="password" type="password"><br>
 		제목: <input id="title" type="text"><br>
-		내용: <textarea rows="20" cols="20"></textarea><br>
-		<button onclick>글등록</button>
+		내용: <textarea id="content" rows="20" cols="20"></textarea><br>
+		<button onclick="onWrite()">글등록</button>
 	
 	
 	
@@ -27,9 +28,11 @@
 	
 	
 <!-- 두번째 페이지 -->	
-	<div id="onPrint">
-	
-	
+	<h1>글목록 페이지</h1>
+	<div>
+	<table id="boardTable" border="1">
+
+	</table>
 	
 	</div>
 	
@@ -38,7 +41,8 @@
 	
 	
 <!-- 세번째 페이지 -->	
-	<div id="onView">
+	<h1>글보기 페이지</h1>
+	<div id="viewbox" >
 	
 	
 	
