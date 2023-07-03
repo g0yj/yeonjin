@@ -42,13 +42,13 @@ function 로그인함수1(){
 }
 
 function 회원가입함수1(){
-	id3= document.querySelector('.loginId3').value
-	pw3= document.querySelector('.loginPw3').value
+	let id3= document.querySelector('.loginId3').value
+	let pw3= document.querySelector('.loginPw3').value
 	if(id리스트3.indexOf(id3)!=-1){
 		alert('가입 불가능')
 		return;
 	}
-	if(id3.length>=8||pw3.length>=8){id리스트3.push(id3)
+	else{id리스트3.push(id3)
 						pw리스트3.push(pw3);
 						alert('성공')}
 	console.log(id리스트3)					

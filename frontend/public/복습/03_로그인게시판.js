@@ -33,12 +33,13 @@ function join(){ console.log('join()함수실행')
 	console.log(joinlist)
 	
 	// 유효성 검사: 배열 안에 이미 있나 없나 확인
-	if(joinlist.indexOf(join)==-1){
-		joinlist.push(join); alert('회원가입성공');return
+	if(joinlist.indexOf(join)!=-1){	
+		
 		}
-	if(joinlist.indexOf(join)!=-1){
-		alert('이미 있는 아이디'); return
-	} 
+	}	
+	else{	
+		joinlist.push(join); alert('회원가입성공');return}
+	 
 }	
 
 //----------로그인---------------------
