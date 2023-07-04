@@ -15,14 +15,8 @@
 	코드 변경되면 저장 후에 페이지에서 새로고침하면서 확인. ctrl+f5: 강력새로고침
 	</p>
 	
-	<h5>
-	
-	footer.jsp : 푸터페이지(모든페이지에 사용 ) : incluedTJdiehla
-	
-	
-	
-	</h5>
 	
 	<%@include file="footer.jsp" %>
+	
 </body>
 </html>
