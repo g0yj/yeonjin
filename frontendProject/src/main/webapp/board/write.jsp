@@ -35,8 +35,8 @@
 
 	<%@include file ="../header.jsp" %>
 	<div class="container">
-		<input class="form-control m-3 title" type="text" placeholder="제목">
-		<textarea id="summernote" class="form-control  m-3" rows="10" ></textarea>
+		<input class="title form-control m-3 title" type="text" placeholder="title">
+		<textarea id="summernote" class="content form-control  m-3" rows="10" >content</textarea>
 		<input class="form-control  m-3" type="file" />
 		
 		<div class="row justify-content-md-center g-3">
