@@ -328,17 +328,18 @@ public class 연산20문제 {
 		
 */		
 		//------ 문제21 여기에 풀이-------//
-/*		문제21 : 세 정수를 입력받아 가장 큰수 출력 		
-*/		
+/*		문제21 : 세 정수를 입력받아 가장 큰수 출력 				
+
 		System.out.println("정수1: "); int 정수1 = scanner.nextInt();
 		System.out.println("정수2: "); int 정수2 = scanner.nextInt();
 		System.out.println("정수3: "); int 정수3 = scanner.nextInt();
 	
 		int max = 정수1;		//임의의 가장 큰 수를 저장
-		max= max<정수2?정수1:max;
+		max= max<정수2?정수2:max;
 		max=max<정수3?정수3:max;
 		
 		System.out.println("max: "+max);
+*/
 	}
 
 }
