@@ -30,16 +30,55 @@ public class If문제7문제 {
 		max=max<정수3?정수3:max;
 		
 		System.out.println("가장 큰 수: "+max);
+		
+		// 수업 중 한 방법-------------
+		 1. max 변수를 사용(많은 데이터 처리 시 가장 좋은 방법)
+		 
+		 int max= 정수1
+		 if(max<정수2){max=정수2;}
+		 if(max<정수3){max=정수3;}
+		 System.out.println("가장 큰 수: "+max);
+		 
+		 2. 논리를 사용
+
+		if(정수1>정수2){ // 첫번째 값이 두번째 값보다 컸을 때
+			if(정수1>정수3){ System.out.println("가장 큰 수: "+정수1);}
+			else { System.out.println("가장 큰 수: "+정수3);}
+		}else if(정수2>정수3){
+			if(
+		}
+		
+		
 */	
 		
-		/* -------문제3-------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>> */
+		/* -------문제3-------------------------*/
 // 문제3 : 3개의 정수를 입력받아서 오름차순[>] / 내림차순[<] [ 경우의수 :  3 7 5 : 3>7 , 3>5 , 7>5     총 : 3개  ]	
-/*		
+		
 		System.out.println("정수1: ");	int 정수1 = scanner.nextInt();
 		System.out.println("정수2: ");	int 정수2 = scanner.nextInt();
 		System.out.println("정수3: ");	int 정수3 = scanner.nextInt();
-*/		
 		
+		if(정수1>정수2) {// 조건이 충족하면 자리를 바꿈 temp사용
+			int temp=정수1;
+			정수1=정수2;
+			정수2=temp;
+		}
+		
+		
+		if(정수1>정수3) {
+			int temp=정수1;
+			정수1=정수3;
+			정수3=temp;
+			
+		}
+		if(정수2>정수3) {
+			int temp=정수2;
+			정수2=정수3;
+			정수3=temp;
+		}
+		
+		System.out.printf("문제3: %3d %3d %3d \n ", 정수1, 정수2, 정수3);
+ 	
 		
 		/* -------문제4----- */
 // 	 문제4 : 점수를 입력받아 점수가 90점 이상이면 합격 아니면 불합격 출력 [ 경우의수 : 2개 ]
@@ -80,24 +119,24 @@ public class If문제7문제 {
 					수학점수 90점이상 이면 '수학장려' 출력
 				그외 재시험 
 */	
-/*		System.out.println("국어점수: ");		int 국어=scanner.nextInt();
+		System.out.println("국어점수: ");		int 국어=scanner.nextInt();
 		System.out.println("영어점수: ");		int 영어=scanner.nextInt();
 		System.out.println("수학점수: ");		int 수학=scanner.nextInt();
 		
-		int 평균= (국어+영어+수학)/3;
+		int 평균= (국어+영어+수학)/3; // 소수점까지 하고 싶다면 (double) 3.0으로 나눠줌
 		
 		if(평균>=90) {
 			if(국어>=100) {System.out.println("국어우수");}
 			if(영어>=100) {System.out.println("영어우수");}
 			if(수학>=100) {System.out.println("수학우수");}
 		}
-		else if(평균>=80) {
+		else if(평균>=80) { // 평균이 80점 이상이면서 국어는 100점 일 수 있음. 이럴 때는 조건 추가해야됨~!
 			if(국어>=90) {System.out.println("국어장려");}
 			if(영어>=90) {System.out.println("영어장려");}
 			if(수학>=90) {System.out.println("수학장려");}
 		}
 		else {System.out.println("재시험");}
-*/		
+		
 		
 		
 		
@@ -112,13 +151,18 @@ public class If문제7문제 {
 		System.out.println("아이디: "); String 아이디=scanner.next();
 		System.out.println("비밀번호: "); String 비밀번호=scanner.next();
 		
-		if(아이디.equals("admin")&&비밀번호.equals("비밀번호")) {
+		if(아이디.equals("admin")&&비밀번호.equals("비밀번호")) { // 아이디가 틀렸는지 패스워드가 틀렸는지 구별이 어려움. 2번 방법 추천
 			System.out.println("로그인 성공");
 		} else {System.out.println("로그인 실패");}
 		
-		
-		
-		
+		// 2. 풀이: 중첩 사용
+		if(아이디.equals("admin")) {
+			if(비밀번호.equals("1234")) {System.out.println("로그인 성공");}
+			else {System.out.println("로그인 실패. 패스워드 다름");}
+		}
+			else {//admin이 아닐때
+				System.out.println("로그인실패. 없는 아이디");}
+			
 		
 		
 		
