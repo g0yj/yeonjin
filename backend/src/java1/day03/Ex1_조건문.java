@@ -87,19 +87,26 @@ public class Ex1_조건문 {
 		
 		//if 중첩
 		
-		int score3=(int)(Math.random()*20)+81;
 		
+		
+		// p.117
+
+		int score3=(int)(Math.random()*20)+81;
 		String grade; // 등급을 저장하는 변수
 		
-		if(score3>=95) {// 90점 이상이면
+		if(score3>=90) {// 90점 이상이면
 			if(score3>=95) {grade="A+";} // 100~90 이면서 95점 이사이면 A+
 			else {grade="A";}//94~90이면서 95점 미만이면 A
 		}else {//점수가 90점 미만이면
-			if(score3>=90) {}
+			if(score3>=85) {
+				grade="B+";
+			}else {
+				grade="B";
+		}
+			System.out.println("학점: "+grade);
 		
 		
-		
-		//p.232
+		//p.121
 		char grade2= 'B';
 		switch(grade2) {// 값을 제어할 변수
 			case 'A' :
@@ -107,9 +114,12 @@ public class Ex1_조건문 {
 			case 'B' :
 			case 'b' : System.out.println("B등급 우수회원"); break;
 			default :
-		}
+			}
 		
 		}
-	}
+		
+	}//main끝
+	
+}//class끝
 
 
