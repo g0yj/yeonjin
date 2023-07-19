@@ -22,33 +22,42 @@ public class 과제4_2_가위바위보 {
 			플레이어 = scanner.nextInt();
 			
 			/* 문제풀이 위치 */
+			
 			//랜덤 객체 생성
 			Random random = new Random();
-			
 			//컴퓨터가 낼 가위바위보
 			컴퓨터= random.nextInt(3);
 			
+			//여기에 썼으면 아래 if문에 하나씩 추가할 필요 없었음.
+			//System.out.println("컴퓨터가 낸 수: " + 컴퓨터);
 			
 
 			if(플레이어!=3){// 게임 진행
 				//게임수 파악을 위함.
 				++게임수;
 				
+				// 강사님은 && || 사용해서 조건 나눔
 				// 컴퓨터를 기준으로 하겠음 (승리 판단)
 				if(컴퓨터>플레이어) {//컴퓨터가 더 큰 수 일때(이길때) : (0,1)(1,2) 
 					System.out.println("컴퓨터가 낸 수: "+ 컴퓨터);
+					System.out.println("플레이어가 낸 수: "+ 플레이어);
 					System.out.println("컴퓨터 승리");
+					
 					컴퓨터승리수+=1;
 				}
 				else if(컴퓨터<플레이어) {// 컴퓨터가 더 작을 때 (질때) : (0,2)
 					System.out.println("컴퓨터가 낸 수: "+ 컴퓨터);
+					System.out.println("플레이어가 낸 수: "+ 플레이어);
 					System.out.println("플레이어 승리");
 					플레이어승리수+=1;
 				}
-				else{System.out.println("무승부임");}
+				else{
+					System.out.println("컴퓨터가 낸 수: "+ 컴퓨터);
+					System.out.println("플레이어가 낸 수: "+ 플레이어);
+					System.out.println("무승부임");}
 				//컴퓨터 기준으로 승리한 경우 확인 끝--------------------------------------
 			}//게임 진행하는 if문 
-			else {//게임 끝냄. 결과물 출력 후 while 벗어남.
+			else {//게임 끝냄. 결과물 출력 후 while 벗어남. 이걸 난수 생성 전에 배치하면 효율성을 높일 수 있음
 				System.out.println("게임수: "+게임수+","+"플레이어승리: "+ 플레이어승리수 +"컴퓨터승리: "+컴퓨터승리수);
 				break;}
 				

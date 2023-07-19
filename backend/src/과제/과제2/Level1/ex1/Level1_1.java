@@ -6,6 +6,24 @@ public class Level1_1 {
 		System.out.println(" >> Level1_1 answer >> \n");
 		/* 문제풀이 위치 */
 		
+		boolean 참거짓=true;
+		byte 바이트=100;
+		char 한글자='A';
+		short sh정수=30000;
+		int 정수=200000000;
+		long lo정수=400000000;
+		float 실수=3.1231232f;
+		double 기본형실수=3.123123123;
+		
+		System.out.println(참거짓);
+		System.out.println(바이트);
+		System.out.println(한글자);
+		System.out.println(sh정수);
+		System.out.println(정수);
+		System.out.println(lo정수);
+		System.out.println(실수);
+		System.out.println(기본형실수);
+		
 		/* ----------- */
 	}
 }

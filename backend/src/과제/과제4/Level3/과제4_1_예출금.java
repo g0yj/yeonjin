@@ -1,4 +1,4 @@
-package 과제.과제4;
+package 과제.과제4.Level3;
 
 import java.util.Scanner;
 
@@ -43,10 +43,6 @@ public class 과제4_1_예출금 {
 				//계좌번호가 일치할 때
 				if(account1.equals(account)) {//조건 3가지 : 비밀번호 일치, 비밀번호 미일치, 잔액부족
 					System.out.print("비밀번호 입력: "); short pw = scanner.nextShort();
-					
-					/*강사님의 의도는 비밀번호를 문자로 받는거
-						String pw = scanner.nextString
-						if(pw.equals(password){} */
 					if(pw==password) { // 패스워드가 일치하면
 						System.out.println("출금액: "); double 출금 = scanner.nextDouble();
 						if(출금< balance) {
@@ -64,7 +60,7 @@ public class 과제4_1_예출금 {
 						
 				else {//계좌번호가 일치하지 않을 때
 					System.out.println("계좌번호 미일치");
-					continue;//틀렸을 때 다시 되돌아가서 할 수 있는 걸 보여주기 위해 넣은거임. 넣을 값이 정해져 있어서 무조건 true상황만 나온다면 continue를 통해 돌아갈 필요는 없음.
+					continue;
 					}
 				
 				}//출금 끝
@@ -73,7 +69,7 @@ public class 과제4_1_예출금 {
 			if(ch==3) {System.out.println("예금액: "+ balance);}
 			
 			
-			if(ch==4) {System.out.println("안녕히가세여"); break; }
+			if(ch==4) {System.out.println("안녕히가세여");}
 
 		
 		
