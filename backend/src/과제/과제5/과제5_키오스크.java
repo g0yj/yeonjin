@@ -1,5 +1,8 @@
 package 과제.과제5;
 
+import java.lang.reflect.Array;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class 과제5_키오스크 {
@@ -22,7 +25,33 @@ public class 과제5_키오스크 {
 		
 		String 재고관리 = "";
 		/* 재고관리 변수 샘플  */
-		재고관리 = "300,10,0/200,10,0/100,10,0";
+		
+		
+//1. 임의의 구분에 따른 여러 데이터를 하나의 문자열로 저장----------------------------------------------------------------		
+		//1. 필드(상태,속성) 간의 구분을 ','을 선택 <-본인 마음임
+		// 재고관리 = "10,0,300~ \n200,10,0\n100,10,0";
+		
+		//2. 필드의 단위별 묶음 \n을 채택 
+		재고관리="10,0,300\n10,0,200\n10,0,100\n"; // 별도로 문서화 해줘야 보는 사람이 구별할 수 있음.
+		System.out.println(재고관리);
+//2. 임의의 구분에 따른 하나의 데이터를 여러 데이터로 변환(파싱)------------------------------------------------------------		
+		//3.임의의 구분(문자)을 기준으로 분리= .split() 을 사용
+		//"10,0,300\n,10,0,200\n,~"-> \n으로 하면 4조각
+			//1조각:10,0,300  2조각:10,0,200   3조각:10,0,100  4조각:
+		System.out.println ( Arrays.toString(재고관리.split("\n")));		//[10,0,300,10,0,200,10,0,100]
+		System.out.println("1조각: "+재고관리.split("\n")[0]); //10,0,300
+		System.out.println("2조각: "+재고관리.split("\n")[1]); //10,0,300
+		System.out.println("3조각: "+재고관리.split("\n")[2]); //10,0,300
+		
+		String 콜라정보=재고관리.split("\n")[0];
+		String 환타정보=재고관리.split("\n")[1];
+		String 사이다정보=재고관리.split("\n")[2];
+		
+		
+		int 콜라재고 =Integer.parseInt( 콜라정보.split(",")[0]);  // 콜라는 문자고 콜라정보는 숫자를 원함. 변환을 위한 형변환 필요 , Integer.parseInt 사용
+		int 환타재고 =Integer.parseInt( 환타정보.split(",")[1]);  
+		int 사이다재고 =Integer.parseInt( 사이다정보.split(",")[2]);  
+		
 		/* ----------- */
 		
 		while(true) {
