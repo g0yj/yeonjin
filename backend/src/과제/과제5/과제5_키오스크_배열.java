@@ -1,4 +1,4 @@
-package 과제.과제6;
+package 과제.과제5;
 
 import java.util.Arrays;
 import java.util.Scanner;
