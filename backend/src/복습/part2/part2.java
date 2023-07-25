@@ -89,6 +89,7 @@ public class part2 {
 				System.out.println("투입금액: "); int 투입금액=scanner.nextInt();
 				if(총금액<=투입금액) {
 					System.out.println("결제성공");
+					
 				}
 				else {
 					System.out.println("결제실패");
@@ -107,12 +108,17 @@ public class part2 {
 				System.out.println("바구니상태"+콜라바구니+환타바구니+사이다바구니);
 				System.out.println("재고상태"+콜라재고+환타재고+사이다재고);
 				
+				
 			}//취소
 			
 		}
 		
-		
+		재고관리 = 콜라재고+","+콜라바구니+","+콜라가격+"\n"
+				+ 환타재고+","+환타바구니+","+환타가격+"\n"
+				+ 사이다재고+","+사이다바구니+","+사이다가격+"\n";
+			System.out.println(콜라재고);
 		}//while
+		
 	} //main
 
 }//class
