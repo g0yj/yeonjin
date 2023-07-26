@@ -69,7 +69,7 @@ public class MemberSys {
 					//memberList[i]!=null 을 하는 이유???
 					if(memberList[i]!=null&&memberList[i].id.equals(inputId)&&memberList[i].password.equals(inputPw)) {//로그인성공
 						login = i; //로그인 성공 후 변수에 성공한 인덱스에 저장= 추후 로그인 상태 활용
-						break;
+						break;// break 없으면 배열 내 모든 값이 동일하게 채워짐
 					}
 					
 				}//for end

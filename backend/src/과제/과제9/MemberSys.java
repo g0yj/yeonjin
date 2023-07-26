@@ -67,7 +67,8 @@ public class MemberSys {
 				
 				for(int i=0; i<memberList.length;i++) {
 					// 만약 i번째 객체의 id 필드와 력받은 아이디와 같고 ;i번째 pw필드와 입력 받은 비밀번호와 같으면
-					//memberList[i]!=null 을 하는 이유???
+					//memberList[i]!=null 을 하는 이유??? -> NullPointerException 오류 발생. 
+														// 참조타입 변수는 아직 번지를 저장하고 있지 않다는 뜻의 null 값을 가질 수 있음. 이건 스택이 아직 주소를 가지고 있지 않다는 뜻
 					if(memberList[i]!=null&&memberList[i].id.equals(inputId)&&memberList[i].password.equals(inputPw)) {//로그인성공
 						login = i; //로그인 성공 후 변수에 성공한 인덱스에 저장= 추후 로그인 상태 활용
 						break;
