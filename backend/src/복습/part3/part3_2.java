@@ -14,13 +14,13 @@ public class part3_2 {
 		 System.out.println("1.콜라 2. 사이다 3. 환타 4. 결제");
 		 System.out.println("제품선택: "); int ch= sc.nextInt();
 		 
+		 String 제품 = 재고관리[ch-1];
+		 int 재고 = Integer.parseInt(제품.split(",")[0]);
+		 int 바구니 = Integer.parseInt(제품.split(",")[1]);
+		 int 가격 = Integer.parseInt(제품.split(",")[2]);
+		 String 제품명 = 제품.split(",")[3];
 		 
 		 if(ch==1||ch==2||ch==3) {
-			 String 제품 = 재고관리[ch-1];
-			 int 재고 = Integer.parseInt(제품.split(",")[0]);
-			 int 바구니 = Integer.parseInt(제품.split(",")[1]);
-			 int 가격 = Integer.parseInt(제품.split(",")[2]);
-			 String 제품명 = 제품.split(",")[3];
 			 
 			 if(재고>0) {//재고가 있으면
 				 System.out.println("바구니 담기");
@@ -36,11 +36,11 @@ public class part3_2 {
 			 System.out.printf("%5s%5s%5s\n","제품명","수량","가격");
 			 for(int i=0;i<재고관리.length;i++) {
 				 
-				 String 제품 = 재고관리[i];
-				 int 재고 = Integer.parseInt(제품.split(",")[0]);
-				 int 바구니 = Integer.parseInt(제품.split(",")[1]);
-				 int 가격 = Integer.parseInt(제품.split(",")[2]);
-				 String 제품명 = 제품.split(",")[3];
+				  제품 = 재고관리[i];
+				  재고 = Integer.parseInt(제품.split(",")[0]);
+				  바구니 = Integer.parseInt(제품.split(",")[1]);
+				  가격 = Integer.parseInt(제품.split(",")[2]);
+				  제품명 = 제품.split(",")[3];
 
 				 if(바구니>0) {//바구니있
 					 System.out.println("바구니담기");
