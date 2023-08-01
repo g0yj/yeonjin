@@ -21,14 +21,14 @@ public class BoardController {
 		
 			 //1. 매개변수로부터 전달 받은 content,, writer를 하나의 객체로 선언
 			BoardDto boardDto = new BoardDto(writer,content);
-			
+			boardDto.setView(0);
 			//2. 객체를 배열에 저장[빈공간을 찾아서 빈공간 저장]
 			BoardDao.getInstance().boardDtoList.add(boardDto);
 				
 	
 			
 			// 성공 시 true, 실패시 false 기 때문에 boolean으로 리턴 받음
-			return false;
+			return true;
 		}//writerLogic()
 		
 		
@@ -36,9 +36,11 @@ public class BoardController {
 	// 글 출력 페이지---------------------------------------------------
 		public BoardDto printLogic(int index) {
 			System.out.println("검토용) 출력 컨트롤러까지 도착");
-			
+			int view = BoardDao.getInstance().boardDtoList.get(index).getView()+1;
+			BoardDao.getInstance().boardDtoList.get(index).setView(view);
 			//1. 리스트 안에 있는 객체 호출 .get(인덱스)
 			BoardDto boardDto=BoardDao.getInstance().boardDtoList.get(index);
+			
 			//2. 호출된 dto를 리턴
 			return boardDto;
 			

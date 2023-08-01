@@ -76,7 +76,7 @@ public class MainPage {
 		BoardDto result= BoardController.getInstance().printLogic(index);
 		//3. 전달 받은 결과를 출력
 		System.out.println("검색한 방문록 정보");
-		System.out.println("작성자: "+result.getWriter()+"내용: "+result.getContent());
+		System.out.println("작성자: "+result.getWriter()+"내용: "+result.getContent()+"| 조화"+result.getView());
 	
 	
 	
