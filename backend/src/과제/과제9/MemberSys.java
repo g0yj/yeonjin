@@ -38,9 +38,7 @@ public class MemberSys {
 				System.out.print("나이: "); int inputAge=scanner.nextInt();
 				
 				//2. 5가지를 하나로 묶음 = 문자열vs 객체 (객체선택)
-				Member member=new Member(inputId, inputPw, inputName, inputPhone, inputAge) {
-				};
-				
+				Member member=new Member(inputId, inputPw, inputName, inputPhone, inputAge);
 				
 				//3. 여러개의 객체를 저장하기 위해 배열에 저장
 					//*비어 있는 인덱스(=기본값이 들어있는)를 찾아 해당 인덱스에 객체 저장
@@ -68,9 +66,12 @@ public class MemberSys {
 				for(int i=0; i<memberList.length;i++) {
 					// 만약 i번째 객체의 id 필드와 력받은 아이디와 같고 ;i번째 pw필드와 입력 받은 비밀번호와 같으면
 					//memberList[i]!=null 을 하는 이유??? -> NullPointerException 오류 발생. 
-														// 참조타입 변수는 아직 번지를 저장하고 있지 않다는 뜻의 null 값을 가질 수 있음. 이건 스택이 아직 주소를 가지고 있지 않다는 뜻
+														// 참조타입 변수는 아직 번지를 저장하고 있지 않다는 뜻의 null 값을 가질 수 있음.
+															//이건 스택이 아직 주소를 가지고 있지 않다는 뜻
 					if(memberList[i]!=null&&memberList[i].id.equals(inputId)&&memberList[i].password.equals(inputPw)) {//로그인성공
 						login = i; //로그인 성공 후 변수에 성공한 인덱스에 저장= 추후 로그인 상태 활용
+						System.out.println("if문 안에 로그인 성공 문자 출력");
+						System.out.println(Arrays.toString(memberList));						
 						break;
 					}
 					

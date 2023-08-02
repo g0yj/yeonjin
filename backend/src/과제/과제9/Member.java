@@ -20,7 +20,13 @@ public class Member {
 		public Member() {}
 	
 		//1. 매개변수 5개 정의
-		public Member(String id, String password, String name, String phone, int age) {}
+		public Member(String id, String password, String name, String phone, int age){
+			this.id = id;
+			this.password = password;
+			this.name = name;
+			this.phone = phone;
+			this.age = age;
+		}
 		//2. 매개변수4
 		public Member(String id, String password, String name, String phone) {}
 		//3. 매개변수3
