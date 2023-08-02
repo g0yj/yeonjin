@@ -13,7 +13,7 @@ public class MemberController { // 기능처리(로직) 담당하는 클래스 /
 	private MemberController() { }
 	
 	public boolean singupLogic( String id , String pw , String name , String phone , int age) {
-		MemberDto m = new MemberDto(id, pw, name, phone, age); 
+		MemberDto m = new MemberDto(id, pw, name, phone); 
 		for( int i = 0 ; i< MemberDao.memberList.length ; i++ ) {
 			if( MemberDao.memberList[i] == null ) { 
 				MemberDao.memberList[i] = m; return true; // 회원가입 성공 
@@ -33,6 +33,7 @@ public class MemberController { // 기능처리(로직) 담당하는 클래스 /
 		return false; // 로그인 실패 
 	}
 	void findIdLogic() {
+		
 		
 	}
 	void findPwLogic() {

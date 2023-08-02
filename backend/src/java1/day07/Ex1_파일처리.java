@@ -116,6 +116,29 @@ public class Ex1_파일처리 {
 		 복권파일.read(복권파일바이트배열);
 		 String 복권파일정보= new String(복권파일바이트배열);
 		 System.out.println(복권파일정보);
+		 
+// 외부파일 불러오기--------------------------------------------------------------------
+		 String 경로="./src/java1/day07/전국관광지정보표준데이터.csv";
+		 	//1. 파일입력 객체 생성
+		 FileInputStream 관광지파일 = new FileInputStream(경로);
+		 	//2. 파일 정보 객체 생성
+		 File file2=new File(경로); //<- file.length() 메소드 사용하기 위해 필요
+		 
+		 	//3. 파일 용량만큼의 바이트배열 선언
+		 byte[] 관광지파일바이트배열 = new byte[(int)file2.length()];
+		 	//4. 읽어온 바이트를 해당 뱅ㄹ에 저장
+		 관광지파일.read(관광지파일바이트배열);
+		 	//5. 바이트배열을 문자열로 변환
+			 //5-1 한글이 깨질 수 있음. 인코딩 필요(UTF-8 / EUC-KR)
+				 //String 관광지파일정보 = new String(관광지파일바이트배열); 
+		 String 관광지파일정보 = new String(관광지파일바이트배열,"EUC-KR");
+		 System.out.println(관광지파일정보);
+		 
+		 System.out.println(관광지파일정보.split("\n")[0]);
+		 System.out.println(관광지파일정보.split("\n")[1]);
+		 	
+		 
+		 
 	
 	}//main
 

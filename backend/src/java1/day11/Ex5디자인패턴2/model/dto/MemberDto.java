@@ -11,7 +11,7 @@ public class MemberDto { // 데이터 모델/형식 이동 객체
 		// 1. 빈생성자 
 	public MemberDto() { }
 		// 2. 풀생성자
-	public MemberDto(String id, String pw, String name, String phone, int age) {
+	public MemberDto(String id, String pw, String name, String phone) {
 		super();
 		this.id = id;
 		this.pw = pw;
