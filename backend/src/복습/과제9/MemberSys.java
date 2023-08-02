@@ -27,7 +27,7 @@ public class MemberSys {
 				Member member = new Member(id, pw, name, phone, age);
 				
 				for(int i=0; i<memberList.length;i++) {
-					if(memberList[i]!=null) {
+					if(memberList[i]==null) {
 						memberList[i]=member;
 						System.out.println("회원가입성공");
 						System.out.println("배열 추가 확인:  \n"+memberList);
