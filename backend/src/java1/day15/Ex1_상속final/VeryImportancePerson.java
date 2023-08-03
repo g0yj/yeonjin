@@ -8,14 +8,15 @@ public class VeryImportancePerson extends Member{
 
 	
 	// 클래스에 final 없고 메소드에 final 없음 - > 오버라이딩 가능
-@Override
-public void stop2() {
-	// TODO Auto-generated method stub
-	super.stop2();
-}
+	@Override
+	public void stop1() {	// stop1메소드는 final 키워드가 있으면 오버로딩 불가
 
-// 클래스에 final 없어서 상속은 가능하나 함수에 final로 오버라이딩 불가능
-public void stop1() {}
-
+		super.stop1();
+	}
+	@Override
+	public void stop2() {	// stop2메소드는 final 키워드가 있으므로 오버라이딩 불가능 [ 오류발생 ]
+		super.stop2();
+	}
+	
 
 }

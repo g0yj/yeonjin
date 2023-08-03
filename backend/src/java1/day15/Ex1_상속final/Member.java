@@ -13,7 +13,7 @@ public class Member {
 		 		final void stop(){} : 해당 메소드는 자식클래스가 오버라이딩 불가
 	 */
 	
-	public final void stop1() {}
+	public  void stop1() {}
 	
 	public void stop2() {}
 	
