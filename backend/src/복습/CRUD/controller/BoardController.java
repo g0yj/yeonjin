@@ -1,29 +1,10 @@
 package 복습.CRUD.controller;
 
-import 복습.CRUD.model.dao.BoardDao;
-import 복습.CRUD.model.dto.BoardDto;
 
 public class BoardController {
+	//싱글톤 객체 만들기
 	private static BoardController boardController = new BoardController();
 	public static BoardController getInstance() {return boardController;}
-	private BoardController() {};
-	
-	
-	public boolean writeLogic(String content, String writer) {
-		System.out.println("쓰기컨트롤러 도착~");
-		BoardDto boardDto = new BoardDto(writer,content);
-		BoardDao.getInstance().boardList.add(boardDto);
-		
-		return true;
-		}//writeLogic()
-
-
-	public void printLogic(int index) {
-		BoardDto boardDto = BoardDao.getInstance().boardList.get(index);
-		
-			
-	
-	}// printLogic()
-
+	private BoardController() {}
 
 }//class
