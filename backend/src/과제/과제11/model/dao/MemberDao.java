@@ -2,11 +2,34 @@ package 과제.과제11.model.dao;
 
 import 과제.과제11.model.dto.MemberDto;
 
+
+//11시 48분
 public class MemberDao extends Dao{
 	
 	private static MemberDao memberDao = new MemberDao();
 	public static MemberDao getInstance() {return memberDao;}
 	private MemberDao() {}
+	
+	
+	// 회원정보 checkSQL(유효성검사를 위해)
+		// 첫번째 방법: type을 쓰는 이유 : type=1 아이디 중복체크, type=2 비밀번호중복체크로 굳이 똑같은 걸 두번 만들 필요 없으니깐
+		//public boolean infoCheck(int type, String[]values) {
+		//두번째방법:
+	public boolean infoCheck(String 검색할필드명, String 검색할값)	{
+	try {	//오류: You have an error in your SQL syntax // SQL 문법 오류 발생
+			String sql="select*from member where "+검색할필드명+"=?"; System.out.println(sql);
+			ps= conn.prepareStatement(sql);
+			ps.setString(1, 검색할값);
+			rs = ps.executeQuery();
+			if(rs.next()) {return true;}// 레코드 존재 -> 이미 있는 데이터 - > 중복
+		} catch (Exception e) {System.out.println(e);}
+
+	
+		
+		return false;
+		
+	}
+	
 	
 	
 	//1. 회원가임 sql
@@ -35,7 +58,7 @@ public class MemberDao extends Dao{
 		return false;
 	}
 	//2. 로그인sql
-	public boolean loginSQL(String id, String pw) {
+	public int loginSQL(String id, String pw) {
 		System.out.println("-----loginSQL 다오 도착");
 		System.out.println(id+pw);
 		try {
@@ -55,11 +78,122 @@ public class MemberDao extends Dao{
 			// null 값을 제거하기 위해 다음 객체를 호출해주는 함수
 		
 		if(rs.next()) {// 로그인 결과 레코드는 1개거나 0개이기 때문에 if를 사용해 .next()를 한번만 하면됨
-			return true;//로그인성공
+			return rs.getInt(1);//로그인성공 , 검색된 회원번호 반환
 		}//if
 		}catch (Exception e) {System.out.println(e);}
 		
-		return false; //로그인실패
+		return 0; //로그인실패
 	}
 
+	
+	//4. 아이디찾기
+			//String으로 받는 이유: 맞는 아이디를 찾아와 return해줄거임
+	public String findById(String mname, String mphone) {
+		
+	
+		try {
+			
+			//1. sql 작성
+			String sql = "select*from member where mname=? and mphone=?";
+			//2. 작성된 sql 조작할 Pr~ 객체를 연동객체로부터 반환
+			ps= conn.prepareStatement(sql);
+			//3. sql 조작 
+			ps.setString(1, mname);
+			ps.setString(2, mphone);
+			//4. sql 실행
+			//5. sql 결과를 조작할 ResultSet 객체를 메소드로부터 반환 받음
+			rs= ps.executeQuery();
+				// rs.next() : 검색된 여러 레코드 중 다음 레코드 위치 이동
+				//rs.getString(검색필드순서번호):현재 위치한 레코드 필드값 호출. 문자열로
+			if(rs.next()) {return rs.getString(2);} //sql에 따라 필드 순서가 달라질 수 있음에 유의!
+			
+		
+		} catch (Exception e) {System.out.println("Dao실패이유: "+e);}
+		
+		return null;// 빨간줄 생기니까 String의 기본값인 null을 미리 넣어놓고 큰 틀 잡아 넣고 알맹이 채워넣기
+		
+	}
+	
+	//5. 
+	public String findByPw(String mid, String mphone) {
+
+		try {
+			
+		String sql = "select mpw from member where mid=? and mphone=?";
+		ps= conn.prepareStatement(sql);
+		ps.setString(1, mid);
+		ps.setString(2, mphone);
+		rs=ps.executeQuery();
+		if(rs.next()) {return rs.getString(3);} 
+		
+		} catch (Exception e) {System.out.println("Dao실패이유: "+e);}
+		
+		return null;// 빨간줄 생기니까 String의 기본값인 null을 미리 넣어놓고 큰 틀 잡아 넣고 알맹이 채워넣기
+	}
+	
+	//6.회원정보페이지 : 회원번호를 가지고 회원정보 찾기. 회원번호가 존재하는 레코드 찾기
+public MemberDto info(int mno) {
+	try {
+		//1. sql작성
+		String sql ="select*from member where mno=?";
+		//2. sql조작 객체를 가져옴
+		ps=conn.prepareStatement(sql);
+		//3. SQL 조작
+		ps.setInt(1, mno);
+		//4. SQL 실행, 5.sQL결과 조잦객체
+		rs = ps.executeQuery();
+		//6. sql결과 조작 , 만약에 다음 레코드가 존재한다면
+		if(rs.next()) {
+			//*현재 레코드를 dto로만들기
+			// 3번이 null인 이유. 비번은 들고다니지 않음. null로 하는 걸 추천
+			MemberDto dto=new MemberDto(
+					rs.getInt(1),rs.getString(2),
+					null,rs.getString(4),
+					rs.getString(5));
+			return dto;
+			
+		}
+	} catch (Exception e) {System.out.println(e);}
+	
+	
+	return null;
+		
+	}
+	
+public boolean infoUpdate(String newPw, int mno) {
+	try {
+		String sql="update member set mpw= ? where mno = ? ";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, newPw);
+		ps.setInt(2, mno);
+		int row= ps.executeUpdate(); //row에 대입해주는 이유는 업데이트한 레코드 개수를 반환해주고 있음. 유효성 검사임.
+		if(row==1) return true;
+		
+	}
+	catch (Exception e) {
+	}
+	
+	return false;
+	
+}
+
+
+
+public boolean infoDelete(int mno) {
+	try {
+		String sql = "delete from member where mno= ? ";
+		ps = conn.prepareStatement(sql);
+		ps.setInt(1, mno);
+		int row =ps.executeUpdate();
+		if(row==1) {return true;}
+	} catch (Exception e) {System.out.println(e);}
+	
+	return false;
+	
+}
+
+
+	
+	
+	
 }
