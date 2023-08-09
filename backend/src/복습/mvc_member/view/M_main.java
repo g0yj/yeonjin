@@ -55,7 +55,12 @@ public class M_main {
 		
 		boolean result =
 				M_controller.getInstance().loginLogic(mid,mpw);
-		if(result) {System.out.println("로그인성공");}
+		if(result) {
+			System.out.println("로그인성공");
+			//만약 로그인에 성공하면 다른 클래스의 함수로
+			M_loginPage.getInstance().loginMenu();	
+		
+		}//if
 		else {System.out.println("로그인실패");}
 	}//loginView()
 	
