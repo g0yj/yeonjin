@@ -81,4 +81,23 @@ public class M_controller {
 		
 		}	
 	
+//9. 회원정보페이지 info()  view :loginpage----------------------------------------
+	public M_dto info() {
+		//한명의 회원정보를 dto로부터 리턴 받음!= 하나의 레코드
+		//인수는 c에 이미 저장된 값임. this 사용!
+		return M_dao.getIntance().info(this.loginSession);
+		}//f()
+	
+//10. infoUpdate: 회원정보수정페이지---------------------------------------------
+	public boolean infoUpdate(String newPw) {
+		return M_dao.getIntance().infoUpdate(newPw, loginSession);
+	}	
+	
+//11. infoDelete: 회원탈퇴 페이지-----------------------------
+	public boolean infoDelete() {	
+		return M_dao.getIntance().infoDelete(loginSession);
+	}
+	
+	
+	
 }//class

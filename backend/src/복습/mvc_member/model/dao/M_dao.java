@@ -126,7 +126,50 @@ public class M_dao extends Dao_M{
 		return false; 
 	}
 	
+//9. 회원정보페이지 info()  view :loginpage	---------------------------
+	//회원번호를 가지고 회원번호 찾기. 회원번호가 존재하는 레코드 찾기
+	public M_dto info(int mno) {
+		try {
+			String sql ="select*from member where mno=?";
+			ps= conn.prepareStatement(sql);
+			ps.setInt(1, mno);
+			rs=ps.executeQuery();
+			
+			if(rs.next()) {// 만약 레코드가 존재하면
+						//현재 레코드를 dto로 만들기
+														//3번은 비밀번호로 안전성을 위해 null로 전달
+				M_dto dto = new M_dto(rs.getInt(1), rs.getString(2), null, rs.getString(4), rs.getString(5));
+				return dto;
+			}//if
+			
+		}catch (Exception e) {System.out.println("dao오류:"+e);}
+		return null;}
 	
+//10. infoUpdate: 회원정보수정페이지-------------------------------------------
+	public boolean infoUpdate(String newPw ,int mno) {
+		try {
+			String sql="update member set mpw= ? where mno = ?";
+			ps= conn.prepareStatement(sql);
+			ps.setString(1,newPw);	ps.setInt(2, mno);
+			// ps.executeUpdate();  가능하나 좀 더 꼼꼼한 유효성을 위해서
+			int row =ps.executeUpdate();
+			if(row==1) {return true;} //mno는 무조건 하나기 때문에 row = 1 쓰면됨.
+		}catch (Exception e) {System.out.println("dao에서 실패이유: "+e);}
+		
+		
+		return false;
+	}	
 	
+//11. infoDelete: 회원탈퇴 페이지---------------------------------------
+	public boolean infoDelete(int mno) {
+		try {
+			String sql = "delete from member where mno=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, mno);
+			int row = ps.executeUpdate(); // 삭제한 레코드 개수 반환
+			if(row==1) {return true;}
+		}catch (Exception e) {System.out.println("dao실패이유: "+e);}
+		return false;
+	}
 	
 }//class
