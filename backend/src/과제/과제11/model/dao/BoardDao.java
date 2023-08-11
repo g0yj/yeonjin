@@ -24,11 +24,20 @@ public class BoardDao extends Dao{
 			return true;
 		}catch (Exception e) {System.out.println("dao오류:"+e);}
 		return false;
-	}//f()
+	}//f() 
 	
 	
-//10. boardPrint : 모든 게시물 출력---------------------------
-		//반환타입: 
+	/*	ArrayList<리스트에저장할타입>리스트객체명 = new ArrayList<>();
+	 * 1. .size() :리스트 내 객체수
+	 * 2. .get(인덱스) : 리스트 내 인덱스번째의 객체 호출
+	 * 3. .add(객체) : 리스트 내 객체 추가
+	 */
+	
+	
+	
+//10. boardPrint : 모든 게시물 출력---------------------------------------
+		//반환타입:  
+		// ArrayList<타입명>변수=new ArrayList<>();
 	public ArrayList<BoardDto> boardPrint() {
 		ArrayList<BoardDto>list=new ArrayList<>();
 		try {//1. 최신순으로 모든 게시물 호출
@@ -86,7 +95,7 @@ public class BoardDao extends Dao{
 				BoardDto dto = new BoardDto(
 						rs.getInt(1) , rs.getString(2) , rs.getString(3), 
 						rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getString(7) );
-				boardViewCount();
+				boardViewCount(bno);
 				return dto;
 			}
 		}catch (Exception e) {System.out.println("dao오류이유: "+e);}
@@ -94,19 +103,57 @@ public class BoardDao extends Dao{
 	}
 	
 //11-2조회수 증가함수---------------------------------------------------------------
-	public boolean boardViewCount() {return false;}
+	public boolean boardViewCount(int bno) {
+		try {
+			String sql = "update board set bview = bview+1 where bno="+bno;
+			ps = conn.prepareStatement(sql);
+			int row=ps.executeUpdate();
+			if(row==1) {return true;}
+		}catch (Exception e) {System.out.println("조회수증가 dao 문제: "+e);
+		}
+		return false;
+		}
 	
 	
 	
 //12. boardUpdate:  게시물 수정---------------------------------------------------------
-	public void boardUpdate() {}
+
+	public boolean boardUpdate(BoardDto boardDto ) {
+		
+		try {
+			String sql = "update board btitle = ? , bcontent =? where bno = ? ";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, boardDto.getBtitle());
+			ps.setString(2, boardDto.getBcontent());
+			ps.setInt(3, boardDto.getBno());
+			//select -> rs =ps.executeQuery()  
+			//insert,update,delete -> int row = ps.executeUpdate()
+			int row = ps.executeUpdate();
+			if(row==1) {return true;}  
+			//row==1 유효성 검사를 하는 이유: sql에서 게시물의 갯수가 입력 받은 것 보다 적어도 오류가 뜨지 않음. 단 메세지에 0이라고 뜨는데 ... 
+				// 1이 찾을 레코드가 있다는 걸 의미. ( ex~Query 실행된 레코드의 객체를 반환. excu~Update는 갯수를 반환.) 
+		}catch (Exception e) {System.out.println("dao오류: "+e);}
+		return false;
+	}
 	
 
-	//13. boardDelete: 게시물 삭제----------------------------------------------
-	public void boardDelete() {}
+//13. boardDelete: 게시물 삭제----------------------------------------------
+	public boolean boardDelete(int bno) {
+		try {
+			String sql ="delete from board where bno = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			
+			int row = ps.executeUpdate();
+			if(row==1) {return true;}
+			
+		}catch (Exception e) {System.out.println("dao실패: "+e);}
+		return false;
+	}
 	
 	
 	
 	
 	
-}
+	
+}//class

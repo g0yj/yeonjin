@@ -39,6 +39,14 @@ public class BoardDto {
 	}
 
 	
+
+	public BoardDto(int bno, String btitle, String bcontent) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+	}
+
 	//3. 메소드
 	public int getBno() {
 		return bno;
