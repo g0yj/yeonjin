@@ -33,6 +33,12 @@ public class MainPage {
 			
 		}//while
 	}
+	
+/*
+  catch 블록 안에서 새로운 Scanner 객체를 생성하는 것은 
+  사용자 입력의 잘못된 부분을 버리고, 새로운 시도를 하기 위해 초기화하고 
+  무한 루프를 유지하기 위한 목적
+ */	
 	//2. 회원가임
 	public void signupView() {
 		//1. 출력에 따른 입력값 받음

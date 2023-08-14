@@ -4,6 +4,7 @@ package 과제.과제11.model.dao;
 import java.util.ArrayList;
 
 import 과제.과제11.model.dto.BoardDto;
+import 과제.과제11.model.dto.letterDto;
 
 public class BoardDao extends Dao{
 
@@ -151,7 +152,24 @@ public class BoardDao extends Dao{
 		return false;
 	}
 	
-	
+	//14. 쪽지보내기---------------------------------------------------	
+		public boolean letterSend(letterDto dto ){
+			try {
+				String sql= "insert into letter(bno,mno,pcontent) values (?, ?, ?) ";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1,dto.getBno());
+				ps.setInt(2, dto.getMno());
+				ps.setString(3, dto.getPcontent());
+				ps.executeUpdate();
+			}catch (Exception e) {System.out.println("dao 오류이유: "+e);}
+			
+			return true;
+			
+		}//f()
+
+	//15. 쪽지확인-----------------------------------------------------
+		public void letterCheck() {}
+		
 	
 	
 	

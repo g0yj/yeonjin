@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import 과제.과제11.model.dao.BoardDao;
 import 과제.과제11.model.dto.BoardDto;
+import 과제.과제11.model.dto.letterDto;
 
 public class BoardController {
 
@@ -64,8 +65,24 @@ public class BoardController {
 		boolean result=BoardDao.getInstance().boardDelete(bno);
 		if(result) {return 1;}
 		else return 2;
+		}
+	
+	//14. 쪽지보내기---------------------------------------------------	
+		public boolean letterSend(String pcontent){
+			letterDto dto = new letterDto(0, 0, pcontent);
+			System.out.println("c에서 문제");
+			return  BoardDao.getInstance().letterSend(dto);
+			
+			
+			
+			
+			
+			
+		}
+
+	//15. 쪽지확인-----------------------------------------------------
+		public void letterCheck() {}
 		
-	}
 	
 	
 	

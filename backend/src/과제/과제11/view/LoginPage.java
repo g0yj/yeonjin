@@ -47,11 +47,12 @@ public class LoginPage {
 		System.out.println(">번호: "+result.getMphone());
 		
 		//2. 서브메뉴
-		System.out.print("1.비밀번호수정 2.회원탈퇴 3.뒤로가기 선택>");
+		System.out.print("1.비밀번호수정 2.회원탈퇴 3.뒤로가기 4. 쪽지확인 선택> ");
 		int ch = sc.nextInt();
 		if(ch==1) {infoUpdate();}
 		if(ch==2) {infoDelete();}
 		if(ch==3) {return;}
+		//if(ch==4) {letterSend();}
 	}
 	
 //3. infoUpdate: 비밀번호수정 페이지----------------------------------------
@@ -136,10 +137,11 @@ public class LoginPage {
 		System.out.printf("title: %s\n",result.getBtitle());
 		System.out.printf("content: %s\n",result.getBcontent());
 		
-		System.out.println("1.뒤로가기 2.수정 3.삭제 >선택"); int ch = sc.nextInt();
+		System.out.print("1.뒤로가기 2.수정 3.삭제 4.쪽지보내기 >> 선택: "); int ch = sc.nextInt();
 		if(ch==1) {}
 		else if(ch==2) {boardUpdate(bno,result.getMno());} // 보고있는 게시물 번호와 작성자회원번호
 		else if(ch==3) {boardDelete(bno,result.getMno());}
+		else if(ch==4) {letterSend(bno,result.getMno());}
 	}
 
 	
@@ -172,5 +174,25 @@ public class LoginPage {
 		
 	}//f()
 
+//14. 쪽지보내기---------------------------------------------------	
+	public void letterSend(int bno, int mno){
+	/*
+	 *	1. 우리가 보고있는 글의 작성자에게 쪽지를 보냄 -> 받을 사람 확인
+	 *	2. 쪽지내용을 입력
+	 *	3. 결과 출력
+	 */	
+		System.out.print("메세지내용: "); String pcontent =sc.next();
+		boolean result= 
+				BoardController.getInstance().letterSend(pcontent);
+		
+		if(result) {System.out.println("쪽지보내기성공");}
+		
+		
+		
+	}
+
+//15. 쪽지확인-----------------------------------------------------
+	public void letterCheck() {}
+	
 
 }//class
