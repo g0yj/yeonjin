@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.wrap{
+	width:500px;
+	margin: 0 auto;
+}
+
+.print{
+	display: flex;
+	
+}
+
