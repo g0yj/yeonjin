@@ -27,8 +27,10 @@ public class Test04 extends HttpServlet {
 		String jsonData = "{ \"title\" : \"제목1\" , \"content\" : \"안녕하세요\" }";
 		// " " 문자열 처리 연산자 // " 출력하고 싶은데 => \"
 		System.out.println( "자바[String타입]에서의 JSON 모양 직접 만들기 : " +  jsonData );
+		
+		
 		//1.json타입
-		 response.setContentType("application/json;charset=UTF-8");// JSON타입[객체.속성] 가능
+		 response.setContentType("application/json;charset=UTF-8");// 객체형식으로 전달됨. 따라서 JSON타입[객체.속성] 가능
 		// response.setContentType("text/html;charset=UTF-8"); // 문자타입 [ 객체.속성 ] 불가능
 		
 		 //2. 전송/응답 할 데이터

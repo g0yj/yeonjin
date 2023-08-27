@@ -11,10 +11,10 @@
 	<!-- 헤더 -->
 	<div>
 		<ul>
-			<li><a href="index.jsp">홈으로</a></li>
+			<li><a href="/jspweb/index.jsp">홈으로</a></li>
 			<li><a href="/jspweb/visitlog/visitlog.jsp">방문록</a></li>
 			<li><a href="/jspweb/accountbook/accountbook.jsp">과제1:가계부</a></li>
-			<li><a href="#">회원가입</a></li>
+			<li><a href="/jspweb/member/signup.jsp">회원가입</a></li>
 			
 		</ul>
 	</div>
@@ -39,6 +39,8 @@
  <!-- 
  	헤더는 많은 페이지에서 참고하는 페이지이므로 공통적인 코드를 넣어두면 좋음
  	1. 라이브러리
- 			최신 jquery import(ajax()를 사용할 js파일보다 위에 호출 -->
+ 			최신 jquery import(ajax()를 사용할 js파일보다 위에 호출
+ 			
+ 			
+  -->
 
- -->

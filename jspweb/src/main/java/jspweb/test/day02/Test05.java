@@ -34,13 +34,14 @@ public class Test05 extends HttpServlet {
 		ObjectMapper mapper= new ObjectMapper();
 		String jsondata=mapper.writeValueAsString(boardDto); //json형식으로 변환할 객체 넣기
 		System.out.println("자바");
+		//2. 응답 타입
 		response.setContentType("application/json;charset=UTF-8");
+		//3. 응답 데이터
 		response.getWriter().print(jsondata);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

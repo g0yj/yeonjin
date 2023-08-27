@@ -9,6 +9,9 @@
 	<link href="accountbook.css" rel="stylesheet">
 </head>
 <body>
+
+	<%@include file="../header.jsp" %>
+
 	<h3>고연진 가계부</h3>
 	<div class="wrap">
 		<div class="inputwrap"><!-- 입력 -->

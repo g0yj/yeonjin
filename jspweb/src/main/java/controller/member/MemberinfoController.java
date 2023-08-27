@@ -27,7 +27,7 @@ public class MemberinfoController extends HttpServlet {
     	String memail= request.getParameter("memail");System.out.println("memail: "+memail);
     	String mimg= request.getParameter("mimg");System.out.println("mimg: "+mimg);
     	
-    	//2. 객체화
+    	//2. 객체화(선택)  , 유효성검사(선택)
     	MemberDto dto = new MemberDto(mid, mpwd, memail, mimg);
     	//3. dao에게 전달하고 결과 받음
     	boolean result= MemberDao.getInstance().signup(dto);
