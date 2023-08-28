@@ -24,11 +24,11 @@ public class MemberDao extends Dao {
 	}
 	
 	//6. 아이디 중복검사
-	public boolean findId(String mid) {
+	public boolean findIdOrEmail(String type,String data) {
 		try {
-			String sql ="select*from member where mid=?";
+			String sql ="select*from member where "+type+" =?";//띄어쓰기 주의!!! where 뒤랑 = 앞에.
 			ps=conn.prepareStatement(sql);
-			ps.setString(1, mid);
+			ps.setString(1, data);
 			rs=ps.executeQuery();
 			//while: 결과 레코드 여러개 검사 vs if: 결과 레코드 한개 검사
 			if(rs.next()) {return true;}

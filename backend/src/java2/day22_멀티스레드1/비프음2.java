@@ -1,0 +1,18 @@
+package java2.day22_멀티스레드1;
+
+import java.awt.Toolkit;
+
+public class 비프음2 extends Thread{
+	//implement : 구현하다
+	@Override
+	public void run() {
+	for(int i=0; i<5;i++) {
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		try {Thread.sleep(500);}
+			catch (Exception e) {System.out.println(e);}
+		}
+	}
+	
+	
+	
+}
