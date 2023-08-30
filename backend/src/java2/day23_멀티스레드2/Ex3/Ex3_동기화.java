@@ -21,6 +21,4 @@ public class Ex3_동기화 {
 	}
 	
 	
-	
-	
 }

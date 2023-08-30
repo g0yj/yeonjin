@@ -23,6 +23,21 @@ public class MemberDao extends Dao {
 		return false;
 	}
 	
+	//2. 로그인
+	public boolean login(String mid, String mpwd) {
+		try {
+			String sql ="select*from member where mid=? and mpwd=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, mid);
+			ps.setString(2, mpwd);
+			rs=ps.executeQuery();
+			if(rs.next()) {return true;}
+			else {return false;}
+		} catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+	
 	//6. 아이디 중복검사
 	public boolean findIdOrEmail(String type,String data) {
 		try {

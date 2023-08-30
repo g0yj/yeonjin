@@ -22,6 +22,4 @@ public class WorkThread extends Thread{
 		}// w 해당 스레드는 무한루프[절대 종료되지 않는 스레드]
 	}
 	
-	
-
 }

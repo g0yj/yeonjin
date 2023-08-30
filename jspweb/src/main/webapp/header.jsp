@@ -5,18 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<!-- 헤더는 절대 경로 사용 -->
+	<link href="/jspweb/css/header.css" rel="stylesheet">
+	
 </head>
 <body>
 
 	<!-- 헤더 -->
-	<div>
-		<ul>
-			<li><a href="/jspweb/index.jsp">홈으로</a></li>
+	<div id="header">
+		<div class="mainLogo"><!-- 로고 -->
+			<a href="/jspweb/index.jsp">
+				<img alt="" src="/jspweb/img/ezenlogo.png">
+			</a>
+		</div>
+		
+		<ul class="mainmenu"><!-- 본메뉴 -->
 			<li><a href="/jspweb/visitlog/visitlog.jsp">방문록</a></li>
-			<li><a href="/jspweb/member/signup.jsp">회원가입</a></li>
-			<li><a href="/jspweb/accountbook/accountbook.jsp">과제1:가계부</a></li>
-			<li><a href="#">과제2:도서관열람실</a></li>
+			<li><a href="#">기능1</a></li>
+			<li><a href="#">기능2</a></li>
+			<li><a href="#">기능3</a></li>
+			<li><a href="/jspweb/accountbook/accountbook.jsp">(과1)가계부</a></li>
+			<li><a href="#">(과2)열람실</a></li>
+			<li><a href="/jspweb/hrm/hrm.jsp">(과3)</a></li>
 		</ul>
+		
+		<ul class="submenu"><!-- 서브메뉴 -->
+			<li><a href="/jspweb/member/signup.jsp">회원가입</a></li>
+			<li><a href="/jspweb/member/login.jsp">로그인</a></li>
+			<li><a href="#">로그아웃</a></li>
+			<li><a href="#">마이페이지</a></li>
+			<li><img class="hmimg" src="/jspweb/member/img/default.webp"></li>
+		
+		</ul>
+		
+		
 	</div>
 	
 	
