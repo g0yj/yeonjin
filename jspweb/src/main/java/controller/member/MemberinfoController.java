@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -88,18 +89,88 @@ public class MemberinfoController extends HttpServlet {
     	response.getWriter().print(result);
     	*/
     }
-
+    //2. 회원정보(세션호출) / 로그아웃(세션초기화)호출
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
+    	//1. 요청
+    	String type = request.getParameter("type");
+    		//* 만약 type info이면
+    	if(type.equals("info")) {
+			//*세션에 저장된 로그인객체 꺼내기
+			//1. 세션 호출 [세션타입은 Object]
+			Object session = request.getSession().getAttribute("loginDto"); //findController과 속성명 같아야
+						//2. 타입변환[부모가 자식이 되기 위해서는 강제타입변환 필요. 캐스팅]
+			MemberDto loginDto=(MemberDto)session;
+				//-DTO는 JS 이해할 ㅅ ㅜ없는 언어이므로 JS가 이해할 수 있게 JS 언어로 변환[jackson라이브러리]
+			ObjectMapper objectMapper=new ObjectMapper();
+			String json = objectMapper.writeValueAsString(loginDto);
+		 	response.setContentType("application/json;charset=UTF-8");
+	    	response.getWriter().print(json);
+	    
+    	}
+    	else if(type.equals("logout")) {
+    		//* 세션에 저장된 로그인객체를 없애기/ 초기호ㅏ/ 지우기/삭제
+    		//방법1: (모든 세션의 속성) 초기화하는 함수
+    			//request.getSession().invalidate(); //로그인 정보 뿐만 아니라 모두 삭제 .. 
+    		//방법2:(세션의 특정 속성) jvm gc(해당 객체를 아무도 참조하고 있지 않으면 삭제)
+    			//삭제할 세션속성명과 동일하게 null 값을 대입 , 덮어씌우기 느낌
+    			request.getSession().setAttribute("loginDto", null);
+    	}
+
+    }
 
 
-
+    //3. 회원수정
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		System.out.println("파일업로드전까지는감");
+		//multipart/form-data 전송요청//cos.jar[MultipartRequest클래스]
+		//----------------------파일 업로드------------------------------//
+		MultipartRequest multi=new MultipartRequest(
+				request, //1. 요청방식
+				request.getServletContext().getRealPath("/member/img") , //2. 첨부파일을 저장할 폴더 경로
+				1024*1024*10,//3. 첨부파일 용량 허용 범위[바이트단위]10MB ,내가 정하기~ 
+				"UTF-8",//4.한글인코딩타입
+				new DefaultFileRenamePolicy()
+				);
+		System.out.println("파일업로드는됨");
+		//-----------------------DB업데이트------------------------------//
+		//*form 전송일때는 input의 데이터 호출 시 
+		String mimg=multi.getFilesystemName("mimg");
+		
+		//Dao[로그인된 회원번호,수정할 값]
+		Object object = request.getSession().getAttribute("loginDto");// 1.로그인 세션 호출
+		MemberDto memberDto= (MemberDto)object; //2. 타입 변환
+		int loginMno = memberDto.getMno(); //3. 로그인객체에 회원번호만 호출
+		
+			//만약에 수정할 첨부파일(이미지)이 없으면 (회원정보만 수정하면)
+		if(mimg==null) {//기존 이미지 그대로 사용
+			mimg=memberDto.getMimg(); // 세션에 있던 이미지 그대로 대입 . (수정사항에 첨부파일 변화가 없을때)
+			
+		}
+		
+		boolean result= MemberDao.getInstance().mupdate(loginMno, mimg);
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
+		//db에 사진은 변경되나 front에선 변화가 없는데 ,, 그 이유는 로그인 세션에선 수정이 된게 아니기 때문에. 로그아웃 후 다시 로그인하면 변경된걸 확인할 수 있음.
 	}
-
+	
+	
+//4. 회원삭제-----------------------------------------------------------------------------
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//1. 요청
+		String mpwd= request.getParameter("mpwd"); System.out.println(mpwd);
+		//2. 객체화.유효성
+		//3. dao에 요청
+			//1. 현재 로그인된 회원정보 => 세션
+		Object object = request.getSession().getAttribute("loginDto");// 1.로그인 세션 호출
+		MemberDto memberDto= (MemberDto)object; //2. 타입 변환
+		int loginMno = memberDto.getMno(); //3. 로그인객체에 회원번호만 호출
+			//2. 다오에 전달
+		boolean result=MemberDao.getInstance().mdelete(loginMno, mpwd);
+		
+		//4. 응답
+		response.setContentType("application/json;charset=UTF-8");
+		response.getWriter().print(result);
 	}
 
 }

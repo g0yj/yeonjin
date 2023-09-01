@@ -21,7 +21,7 @@
 		
 		<ul class="mainmenu"><!-- 본메뉴 -->
 			<li><a href="/jspweb/visitlog/visitlog.jsp">방문록</a></li>
-			<li><a href="#">기능1</a></li>
+			<li><a href="/jspweb/board/list.jsp">게시판</a></li>
 			<li><a href="#">기능2</a></li>
 			<li><a href="#">기능3</a></li>
 			<li><a href="/jspweb/accountbook/accountbook.jsp">(과1)가계부</a></li>
@@ -29,13 +29,16 @@
 			<li><a href="/jspweb/hrm/hrm.jsp">(과3)</a></li>
 		</ul>
 		
-		<ul class="submenu"><!-- 서브메뉴 -->
+		<ul class="submenu"><!-- 서브메뉴 js에서 로그인 상태에 따라 변화됨 -->
+			
+		<!--  
+			<li>xxx님</li>
 			<li><a href="/jspweb/member/signup.jsp">회원가입</a></li>
 			<li><a href="/jspweb/member/login.jsp">로그인</a></li>
 			<li><a href="#">로그아웃</a></li>
 			<li><a href="#">마이페이지</a></li>
 			<li><img class="hmimg" src="/jspweb/member/img/default.webp"></li>
-		
+		-->	
 		</ul>
 		
 		
@@ -44,6 +47,7 @@
 	
 		<!-- 최신 jquery import(ajax()를 사용할 js파일보다 위에 호출) -->
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="/jspweb/js/header.js"></script>
 </body>
 </html>
 

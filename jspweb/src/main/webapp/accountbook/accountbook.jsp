@@ -12,8 +12,8 @@
 
 	<%@include file="../header.jsp" %>
 
-	<h3>고연진 가계부</h3>
-	<div class="wrap">
+	<div class="webcontainer">
+		<h3>고연진 가계부</h3>
 		<div class="inputwrap"><!-- 입력 -->
 			<input class="atext"type="text" placeholder="항목">
 			<input class="apay"type="text" placeholder="금액">
