@@ -29,7 +29,7 @@
 	
 			<div class="intitle">이메일</div>
 			<div class="emailbox">
-				<input onkeyup="emailcheck()" name="memail" class="memail" type="text">
+				<input onkeyup="mailcheck()" name="memail" class="memail" type="text">
 				<button class="authReqBtn" onclick="authReq()" disabled type="button">인증요청</button>
 			 </div>
 			

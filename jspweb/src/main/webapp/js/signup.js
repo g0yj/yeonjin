@@ -49,6 +49,7 @@ function idcheck(){/*실행조건: 아이디 입력창에 입력할때마다*/
 	//1.값 호출
 	let mid =document.querySelector('.mid').value;
 	let idcheck=document.querySelector('.idcheckbox') //반복되니까 지역변수로 선언해서 쓰기!
+	
 	//2. 유효성검사(아이디)
 		//제어문을 이용한 유효성검사-> if(mid.length<5&&~ ) : mysql 연결
 		//정규표현식을 사용한 유효성검사
@@ -68,7 +69,7 @@ function idcheck(){/*실행조건: 아이디 입력창에 입력할때마다*/
 			      	if(r){idcheck.innerHTML='사용중인 아이디';checkList[0]=false}
 			      	else{idcheck.innerHTML='사용가능';checkList[0]=true}
 			      } ,       
-			      error : e=>{} ,         
+			      error : e=>{console.log('통신실패')} ,         
 			   });
 
 		}else{
