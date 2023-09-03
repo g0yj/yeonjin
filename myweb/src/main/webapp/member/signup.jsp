@@ -35,20 +35,19 @@
 		</div>
 		
 		<div><!-- 이메일 -->
-			이메일 : <input class="mmail" name="mmail" type="text">
-			<button onclick="mSend()" class="" name="" type="button">보내기</button>
-			<div class="mailcheck"><!-- js 컨트롤 예정 -->
+			이메일 : <input onkeyup="mailcheck()" class="mmail" name="mmail" type="text">
+			<button disabled onclick="mSend()" class="mbutton" name="" type="button">보내기</button>
+			<div class="mailcheck"><!-- js --></div>
+			<div class="mailbox" ><!-- js 컨트롤 예정 -->
 		<!--  	<div class="timer">타이머</div>
 				인증번호<input class="checkno" type="text">
 				<button onclick="mcheck()"type="button">인증</button>
+				<div class="authbox"><div>
 		-->		
 			</div>
 		</div>
 		
-		<div><!-- 이미지 -->
-			<div><img src=""> 미리보기 구역</div>
-			<input type="file" class="" name="">
-		</div>
+
 	</form>
 	
 	<div>

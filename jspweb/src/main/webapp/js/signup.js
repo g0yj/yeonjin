@@ -91,6 +91,7 @@ function pwcheck(){console.log('패스워드 입력중')
 	//2. 유효성검사
 		//1. 정규표현식[영대소문자+숫자조합 5~20글자 사이]
 		let mpwdj=/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9]{5,30}$/
+			
 			if(mpwdj.test(mpwd)){//1. 비밀번호 정규표현식 검사
 				//2. 비밀번호 확인 정규표현식 검사
 				if(mpwdj.test(mpwdconfirm)){
