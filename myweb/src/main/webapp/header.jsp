@@ -19,14 +19,14 @@
 				</a>
 			</div>
 			<div class="smenu">
-				<li><a href="/myweb/member/signup.jsp">회원가입</a></li>
-				<li>로그인</li>
+				<div class="signup"><li><a href="/myweb/member/signup.jsp">회원가입</a></li></div>
+				<div class="login"><li><a href="/myweb/member/login.jsp">로그인</a></li></div>
 			</div>
 		</div>
 	
 		<div class="bottom">
 			<ul class="mmenu">
-				<li><a href="#">기능1</a></li>	
+				<li><a href="/myweb/transaction/transaction.jsp">거래내역</a></li>	
 				<li><a href="#">기능3</a></li>	
 				<li><a href="#">기능4</a></li>	
 				<li><a href="#">기능5</a></li>	
