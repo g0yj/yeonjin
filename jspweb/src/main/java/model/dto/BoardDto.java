@@ -17,9 +17,13 @@ public class BoardDto {
 	private String mid; //작성자 회원아이디
 	private String bcname;//카테고리명
 	private String mimg; //작성자 프로필
+	 //조회대상자와 게시문 작성자의 일치여부(본인글인지 아닌지 체크)
+	private boolean ishost;
 
 	
-//생성자----------------------------------------------------
+
+
+	//생성자----------------------------------------------------
 	//빈생성자
 	public BoardDto() {}
 	//풀생성자
@@ -66,9 +70,6 @@ public class BoardDto {
 		this.bcname = bcname;
 		this.mimg = mimg;
 	}
-	
-	
-	
 
 	public BoardDto(int bno, String btitle, String bcontent, String bfile, String bdate, int bview, int mno, int bcno,
 			String mid, String bcname, String mimg) {
@@ -84,6 +85,16 @@ public class BoardDto {
 		this.mid = mid;
 		this.bcname = bcname;
 		this.mimg = mimg;
+	}
+	
+	//수정할 때 쓸
+	public BoardDto(int bno, String btitle, String bcontent, String bfile, int bcno) {
+		super();
+		this.bno = bno;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bfile = bfile;
+		this.bcno = bcno;
 	}
 	//메소드-------------------------------------------------------	
 	public int getBno() {
@@ -157,6 +168,13 @@ public class BoardDto {
 	}
 	public void setBcname(String bcname) {
 		this.bcname = bcname;
+	}
+	
+	public boolean isIshost() {
+		return ishost;
+	}
+	public void setIshost(boolean ishost) {
+		this.ishost = ishost;
 	}
 	@Override
 	public String toString() {

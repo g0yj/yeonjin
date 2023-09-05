@@ -2,7 +2,7 @@
 console.log('js연결');
 
 /*
-	onchange: 포커스(커서)가 변경될때 값이 다르면
+	onchange: 포커스(커서)가 변경될때 값이 다르면(변화감지)
 	onkeyup: 키보드에서 키를 누르고 떼었을때 실행
 	onkeydown: 키보드에서 키를 눌렀을때
 */

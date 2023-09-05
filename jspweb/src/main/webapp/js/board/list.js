@@ -15,14 +15,43 @@ function onWrite(){// 비로그인이면 로그인 페이지로 이동
 	
 }//f()
 
-//2. 모든 글 조회 [js가 열렸을 때 자동실행]
-getList();
-function getList(){
+/*게시물 조회 조건 객체
+	type: 1-전체조회 2-개별조회
+	bcno: 조회할 카테고리번호[기본값은 전체보기]
+	listsize: 하나의 페이지에 최대 표시할 게시물 수 [기본값10개]
+	page: 조회할 페이지 번호
+*/
+let pageObject={type: 1 ,bcno:0, listsize:10, page:1}
+
+
+//3. 카테고리 버튼을 클릭햇을 때
+function onCategory(bcno){
+	console.log('클릭된 카테고리: '+bcno);
+	pageObject.bcno=bcno; //조회 조건 객체 내 카테고리 번호를 선택한 카테고리로 변경
+	getList(1); //조건이 변경되었기 때문에 다시 출력[재랜더링/새로고침]
+	
+	
+}
+//4. 한페이지 최대 표시할 개수를 변경햇을 때
+function onListSize(){
+	pageObject.listsize=document.querySelector('.listsize').value; //선택된 게시물 수를 조회 조건 객체에 저장
+	getList(1);//조건이 변경되었기 때문에 다시 출력
+	
+}
+
+
+
+//2. 모든 글 조회 [js가 열렸을 때 자동실행] // 페이지번호
+getList(1);
+
+function getList(page){ console.log('글목록페이지js열림')
+	pageObject.page=page; //클릭된 페이지번호를 조건객체에 대입
 	$.ajax({
       	url : "/jspweb/BoardinfoController",     
      	method : "get",   
-     	data : {},      
+     	data : pageObject,  //원래 type:1 만 보냈었는데 3번을 추가하면서 바뀜.(해당 카테고리의 글만 출력)
       	success : r=>{console.log(r);
+      	//--------------------------1.게시물출력------------------//	
       		//1. 출력할 위치
       		let boardTable=document.querySelector('.boardTable')
       		
@@ -33,21 +62,66 @@ function getList(){
 					</tr>`
 					//*서블릿으로부터 전달받은 내뇽[배열]반복해서 html구성
 					//배열명.forEach(반복변수명=>{실행코드})
-					r.forEach(b=>{
+						// controller에서 정보 통합하면서 다시 한번 묶은 적이 있음. 객체로 받은 상황이기 때문에 boardList 안으로 들어가줘야됨.
+					r.boardList.forEach(b=>{
 						html+=`<tr>
-								<th>${b.bno}</th>
-								<th>${b.bcname}</th>
-								<th>${b.btitle}</th>
-								<th>${b.mid}/<img src="/jspweb/member/img/${b.mimg}"></th>
-								<th>${b.bview}</th>
-								<th>${b.bdate}</th>
+								<td>${b.bno}</td>
+								<td>${b.bcname }</td>
+								<td><a href="/jspweb/board/view.jsp?bno=${ b.bno }"> ${ b.btitle } </a></td>
+								<td>
+									${b.mid}
+									<img src="/jspweb/member/img/${b.mimg}">
+								</td>
+								<td>${b.bview}</td>
+								<td>${b.bdate}</td>
 								</tr>`
 					})//for
       		//3.구성된 html 내용을 출력
       		boardTable.innerHTML=html;
+      		
+      	//------------------2. 페이지번호 출력----------------------------------------//
+      	
+      	html=``;
+      	//페이지 개수만큼 페이징 번호 구성
+      			// page: 조회한 페이지 번호 [현재 보고 있는 페이지번호]
+      			//1.이전버튼 (만약 1페이지에서 이전 버튼 클릭 시 1페이지로 고정)
+				html+=`<button onclick="getList(${page<=1?page:page-1})" type="button"><</button>`
+      			//2. 페이지번호버튼 [페이지 개수만큼 반복]
+      			
+   //???????????????????for문 속 i<=5 이쪽 수정 ,   다음버튼 출력 ${ 여기 내용 수정}		
+      			for(let i =1; i<=r.totalpage;i++){
+					  //만약에 현재페이지(페이지)와 i번째 페이지와 일치하면 버튼 태그에 class="selectpage" 추가
+					  html+=`<button class="${page==i?'selectpage' : ''}"onclick="getList(${i})" type="button">${i}</button>`
+				  }
+				//3.다음버튼[page>=pageDto.totalpage 면 마지막 페이지면 가만히! 아니면 page+1]
+			  html+=`<button onclick="getList(${page>=r.totalpage ? page : page+1 })" type="button">></button>`
+      	//pagebox 구역에 구성된 html 출력
+      	document.querySelector('.pagebox').innerHTML=html;	
+      
+      //---------------3. 게시물 수 출력--------------------------------------//
+      let boardcount= document.querySelector('.boardcount');		
+    
+	      boardcount.innerHTM=`총게시물수: ${r.totalsize} 개`		  
+
+      		
       	} ,       
-      	error : e=>{console.log(e)} ,         
+      	error : e=>{console.log('전체글 출력 실패: '+e)} ,         
    });
 
 	
 }
+
+/*
+	HTTP URL에 매개변수(파라미터)전달- 쿼리스트링방식
+		- 정의: 페이지 전환 시 매개변수(pk)전달
+		
+		- 형태
+		URL?변수명=데이터
+		URL?변수명=데이터&변수명=데이터
+		localhost:80/jspweb/board/view.jsp?bno=${b.bno}
+		
+		- URL에서 매개변수 호출
+			new URL(location.href).searchParams.get("매개변수명"); 
+
+
+ */
