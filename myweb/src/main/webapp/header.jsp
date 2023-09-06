@@ -26,7 +26,7 @@
 	
 		<div class="bottom">
 			<ul class="mmenu">
-				<li><a href="/myweb/transaction/transaction.jsp">거래내역</a></li>	
+				<li><a href="/myweb/transaction/transactList.jsp">거래내역</a></li>	
 				<li><a href="#">기능3</a></li>	
 				<li><a href="#">기능4</a></li>	
 				<li><a href="#">기능5</a></li>	

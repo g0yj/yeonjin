@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%@include file="/header.jsp" %>
+	<div class="transactForm">
+	<h3>출력페이지</h3>
+	<a href="transactAdd.jsp"><button type="button">글쓰기</button></a>
+	</div>
 </body>
 </html>
