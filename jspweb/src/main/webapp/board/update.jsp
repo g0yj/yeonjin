@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link href="../css/write.css">
+	<!-- 부트스트랩에서 만든 CSS 적용 -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <!-- 썸머노트 css 적용 - 부트스트랩v5 -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css" rel="stylesheet">
+
+
 </head>
 <body>
 	<%@include file="../header.jsp" %>
@@ -21,7 +28,7 @@
 						<option value="3">노하우</option>			
 					</select>
 			제목:<input type="text" name="btitle" class="btitle"><br>
-			내용:<input type="text" name="bcontent" class="bcontent"><br>
+			내용:<textarea id="summernote"  name="bcontent" class="bcontent"></textarea><br>
 			<div class="oldfile">
 			첨부파일: <input type="file" name="bfile" class="bfile"><br>
 			<button onclick="onUpdate()" type="button">글수정</button>
@@ -35,7 +42,12 @@
 	
 	
 	</div>
-
+<!-- 부트스트랩에서 만든 JS 적용 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<!-- 썸머노트 js 적용 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
+<!-- 썸머노트 한글적용  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/lang/summernote-ko-KR.min.js"></script>
 	<script src="../js/board/update.js" type="text/javascript"></script>
 </body>
 </html>

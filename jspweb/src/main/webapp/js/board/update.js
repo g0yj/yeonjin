@@ -20,8 +20,23 @@ function getBoard(){
       		console.log(r);
       		document.querySelector('.bcno').value =`${r.bcno}`;
       		document.querySelector('.btitle').value =`${r.btitle}`;
-      		document.querySelector('.bcontent').value =`${r.bcontent}`;
+      		document.querySelector('.bcontent').innerHTML =`${r.bcontent}`;
       		document.querySelector('.oldfile').value =`${r.bfile}`;
+      		
+      		/*썸머노트적용!  write랑 위치 다름*/
+				$(document).ready(function() {
+					
+					let option={ //썸머노트 옵션 적용
+				      lang : 'ko-KR' , 
+				      height : 500 , 
+				      placeholder : '여기에 내용작성'
+					}
+					
+					
+				  $('#summernote').summernote(option);
+});
+      		
+      		
       		
       	} ,       
       	error : e=>{console.log(e)} ,         

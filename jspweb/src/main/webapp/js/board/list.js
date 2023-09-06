@@ -20,14 +20,17 @@ function onWrite(){// 비로그인이면 로그인 페이지로 이동
 	bcno: 조회할 카테고리번호[기본값은 전체보기]
 	listsize: 하나의 페이지에 최대 표시할 게시물 수 [기본값10개]
 	page: 조회할 페이지 번호
+	key: 검색할 기준 필드명
+	keyword: 검색할 데이터
 */
-let pageObject={type: 1 ,bcno:0, listsize:10, page:1}
+let pageObject={type: 1 ,bcno:0, listsize:10, page:1, key:'', keyword:''}
 
 
 //3. 카테고리 버튼을 클릭햇을 때
 function onCategory(bcno){
 	console.log('클릭된 카테고리: '+bcno);
 	pageObject.bcno=bcno; //조회 조건 객체 내 카테고리 번호를 선택한 카테고리로 변경
+	pageObject.key = ''; pageObject.keyword=''; //검색해제. 페이지 전환 시 검색 내용란을 빈 공간으로 (선택임. 안하면 그대로 딸려옴)
 	getList(1); //조건이 변경되었기 때문에 다시 출력[재랜더링/새로고침]
 	
 	
@@ -88,8 +91,8 @@ function getList(page){ console.log('글목록페이지js열림')
 				html+=`<button onclick="getList(${page<=1?page:page-1})" type="button"><</button>`
       			//2. 페이지번호버튼 [페이지 개수만큼 반복]
       			
-   //???????????????????for문 속 i<=5 이쪽 수정 ,   다음버튼 출력 ${ 여기 내용 수정}		
-      			for(let i =1; i<=r.totalpage;i++){
+	
+      			for(let i =r.startbtn; i<=r.endbtn;i++){
 					  //만약에 현재페이지(페이지)와 i번째 페이지와 일치하면 버튼 태그에 class="selectpage" 추가
 					  html+=`<button class="${page==i?'selectpage' : ''}"onclick="getList(${i})" type="button">${i}</button>`
 				  }
@@ -100,8 +103,14 @@ function getList(page){ console.log('글목록페이지js열림')
       
       //---------------3. 게시물 수 출력--------------------------------------//
       let boardcount= document.querySelector('.boardcount');		
-    
-	      boardcount.innerHTM=`총게시물수: ${r.totalsize} 개`		  
+    	//1.검색이 있을때
+    	if(pageObject.key==''&&pageObject.keyword==''){
+	      boardcount.innerHTML=`총게시물수: ${r.totalsize} 개`		  
+			
+		}else{
+			
+	      boardcount.innerHTML=`검색된 게시물수: ${r.totalsize} 개`		  
+		}
 
       		
       	} ,       
@@ -109,7 +118,16 @@ function getList(page){ console.log('글목록페이지js열림')
    });
 
 	
-}
+}//f()
+
+
+/*검색버튼 클릭 */
+function onSearch(){
+	pageObject.key=document.querySelector('.key').value; 
+	pageObject.keyword=document.querySelector('.keyword').value;   
+	getList(1);
+	
+}//f()
 
 /*
 	HTTP URL에 매개변수(파라미터)전달- 쿼리스트링방식

@@ -1,5 +1,19 @@
 console.log('개별글출력페이지')
 
+/*썸머노트적용*/
+$(document).ready(function() {
+	
+	let option={ //썸머노트 옵션 적용
+      lang : 'ko-KR' , 
+      height : 500 , 
+      placeholder : '여기에 내용작성'
+	}
+	
+	
+  $('#summernote').summernote(option);
+});
+
+
 //1.list.jsp에서 클릭된 제목의 bno를 전달 받아 게시물 1개 가져오기
 getBoard();
 function getBoard(){
@@ -25,9 +39,11 @@ function getBoard(){
 				부가정보2: <div>${r.mid}, <img src= "/jspweb/member/img/${r.mimg}" width="50px" ></div>
 				제목: <div>${r.btitle}</div>
 				내용: <div>${r.bcontent}</div>
-				첨부파일: <div>${r.bfile}</div>
+				첨부파일: <div><a href="/jspweb/FileDownLoad?filename=${r.bfile}">${r.bfile}</a></div>
 				
 			`
+			/* <a href=" HTTP의 get 메소드 방식"*/
+			
 					//글삭제, 수정을 위한 제어[본인글일시 수정,삭제 표시]
 				html+= `<a href="list.jsp"><button type="button">목록</button></a>`
 				if(r.ishost){

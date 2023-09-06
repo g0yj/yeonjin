@@ -1,5 +1,5 @@
 package model.dao;
 
-public class TransactionDao {
+public class TransactionDao extends Dao{
 
 }

@@ -2,6 +2,19 @@ console.log('js실행')
 
 /* */
 
+/* 썸머노트 실행 */
+$(document).ready(function() {
+
+   let option = { // 썸머노트 옵션관련 객체 만들기 
+      lang : 'ko-KR' , 
+      height : 500 , 
+      placeholder : '여기에 내용작성'
+   }
+   
+   $('#summernote').summernote( option );
+  
+});
+
 function bwrite(){
 	//1. form 가져오기
 		//querySelectAll(): 배열타입으로 여러 dom객체

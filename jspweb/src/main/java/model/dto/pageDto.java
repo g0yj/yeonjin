@@ -11,31 +11,39 @@ public class pageDto {
 	private int startrow;// 현재 페이지에서 시작되는 레코드번호
 	private int totalsize;// 총 게시물수 or 카테고리별게시물수
 	private int totalpage;//총 페이지 수
+	private int startbtn;//페이지버튼 시작번호
+	private int endbtn;//페이지버튼의 끝번호
 	
 	//*게시물 리스트[조회된 결과]
 	ArrayList<BoardDto> boardList;
 	
 	
 	
-	
-// 생성자------------------	
-	public pageDto() {}
+//---------------------
+	public pageDto() {	}
 
 
-	public pageDto(int page, int listsize, int startrow, int totalsize, int totalpage, ArrayList<BoardDto> boardList) {
+
+	public pageDto(int page, int listsize, int startrow, int totalsize, int totalpage, int startbtn, int endbtn,
+			ArrayList<BoardDto> boardList) {
 		super();
 		this.page = page;
 		this.listsize = listsize;
 		this.startrow = startrow;
 		this.totalsize = totalsize;
 		this.totalpage = totalpage;
+		this.startbtn = startbtn;
+		this.endbtn = endbtn;
 		this.boardList = boardList;
 	}
 
-// 메소드--------------------------
+//------------------------------------------------
+
+
 	public int getPage() {
 		return page;
 	}
+
 
 
 	public void setPage(int page) {
@@ -43,9 +51,11 @@ public class pageDto {
 	}
 
 
+
 	public int getListsize() {
 		return listsize;
 	}
+
 
 
 	public void setListsize(int listsize) {
@@ -53,9 +63,11 @@ public class pageDto {
 	}
 
 
+
 	public int getStartrow() {
 		return startrow;
 	}
+
 
 
 	public void setStartrow(int startrow) {
@@ -63,9 +75,11 @@ public class pageDto {
 	}
 
 
+
 	public int getTotalsize() {
 		return totalsize;
 	}
+
 
 
 	public void setTotalsize(int totalsize) {
@@ -73,9 +87,11 @@ public class pageDto {
 	}
 
 
+
 	public int getTotalpage() {
 		return totalpage;
 	}
+
 
 
 	public void setTotalpage(int totalpage) {
@@ -83,9 +99,35 @@ public class pageDto {
 	}
 
 
+
+	public int getStartbtn() {
+		return startbtn;
+	}
+
+
+
+	public void setStartbtn(int startbtn) {
+		this.startbtn = startbtn;
+	}
+
+
+
+	public int getEndbtn() {
+		return endbtn;
+	}
+
+
+
+	public void setEndbtn(int endbtn) {
+		this.endbtn = endbtn;
+	}
+
+
+
 	public ArrayList<BoardDto> getBoardList() {
 		return boardList;
 	}
+
 
 
 	public void setBoardList(ArrayList<BoardDto> boardList) {
@@ -93,11 +135,14 @@ public class pageDto {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "pageDto [page=" + page + ", listsize=" + listsize + ", startrow=" + startrow + ", totalsize="
-				+ totalsize + ", totalpage=" + totalpage + ", boardList=" + boardList + "]";
+				+ totalsize + ", totalpage=" + totalpage + ", startbtn=" + startbtn + ", endbtn=" + endbtn
+				+ ", boardList=" + boardList + "]";
 	}
+
 	
 	
 	

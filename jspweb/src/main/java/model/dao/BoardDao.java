@@ -28,11 +28,19 @@ public class BoardDao extends Dao{
 	}
 	
 //게시물 수 출력------------------------------------------------------------
-	public int getTotalSize(int bcno) {
+	public int getTotalSize(int bcno , String key, String keyword) {
 		try {
-			String sql="select count(*)from board b";
-			//만약에 저네보기가 아니면 [카테고리별 개수]
+			String sql="select count(*)from board b natural join member m "; //natural join을 추가해 준 이유? 여러개 섞이다 보니 없을 시 java쪽에서 오류 발생하는 걸 확인 할 수 있음.
+			//만약에 전체보기가 아니면 [카테고리별 개수]
 			if(bcno!=0) {sql += " where b.bcno = "+bcno;}
+			
+			//- 만약에 검색이 있으면
+			if(!key.isEmpty()&&!keyword.isEmpty()) {
+				if(bcno!=0) {sql+= " and ";}
+				else {sql+= " where ";}
+				sql+= " "+key+ " like '%"+keyword+"%' ";
+			}
+			
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			if(rs.next()) {return rs.getInt(1);}
@@ -47,14 +55,26 @@ public class BoardDao extends Dao{
 	
 	
 //2. 모든 글 출력-------------------------------
-	public ArrayList<BoardDto> getList(int bcno,int listsize , int startrow){
+	public ArrayList<BoardDto> getList(int bcno,int listsize , int startrow,String key, String keyword){
 		//*게시물 레코드 정보의 DTO를 여러개 저장하는 리스트
 		ArrayList<BoardDto> list=new ArrayList<>();
 		try {
 			String sql = "select b.*, m.mid, m.mimg, bc.bcname from board b natural join bcategory bc natural join member m ";
 			
-			if(bcno!=0) {//만약에 카테고리를 선택했으면 [전체보기가 아니면]
+			// 만약에 카테고리를 선택했으면 [전체보기가 아니면]
+			if(bcno!=0) {
 				sql+=" where b.bcno= "+bcno;}
+			// 검색이 있으면[key와 keyword 모두 빈문자열이 아니면]
+				//문자열.isEmpty() : 문자열이 비어있으면 [''] null  vs '' 다름!
+			if(!key.isEmpty()&&!keyword.isEmpty()) { //key와 keyword 두개 다 있어야됨!!
+				
+				//- 만약에 카테고리 내 검색이면 [이미 where구문이 존재하기 때문에 and 조건을 추가]
+				if(bcno!=0) {sql+=" and ";}
+				else {	sql+= " where ";}
+					sql+= " "+key+ " like '%" +keyword+ "%' ";  //띄어쓰기 주의!
+					
+			}
+			
 			//뒷부분 공통 sql
 			sql+= " order by b.bdate desc limit ? , ?";
 				
