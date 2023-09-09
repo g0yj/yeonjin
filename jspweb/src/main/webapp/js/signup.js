@@ -157,7 +157,7 @@ function signup2(){
 }
 
 //3. 이메일 유효성검사[1.정규표현식 2.중복검사]-------------------
-function emailcheck(){
+function mailcheck(){
 		let emailcheckbox=document.querySelector('.emailcheckbox');
 		
 		//1. 입력된 값 호출

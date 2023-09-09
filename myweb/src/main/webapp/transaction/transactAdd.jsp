@@ -13,9 +13,9 @@
 	<div class="webcontainer"><!-- 웹전체 -->
 	<h2> 거래 등록 페이지</h2>
 	
-	<form class="transactForm">
+	<form class="transactForm" name="transactForm">
 		<!-- 매수/매도 -->
-			<div class="#">
+			<div class="transactionSelectbox">
 				<select class="transactSelect" name="transactSelect">
 					<option >매수</option>
 					<option>매도</option>
@@ -23,8 +23,8 @@
 			</div>
 			
 		<!-- 종목 -->	
-			<div class="#">
-				<select class="codenumber" name="codenumber">
+			<div class="codenamebox">
+				<select class="codename" name="codename">
 					<option>신성</option>
 					<option>박셀</option>
 					<option>한비</option>
@@ -34,12 +34,12 @@
 			
 		<!-- 수량 -->
 			<div>
-				수량<input class="amount" name="amount"  type="text">
+				수량<input class="tamount" name="tamount"  type="text">
 			</div>
 
 		<!-- 가격 -->
 			<div>
-			가격<input class="price" name="price" type="text">
+			가격<input class="tprice" name="tprice" type="text">
 			</div>
 		
 			

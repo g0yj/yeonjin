@@ -2,42 +2,63 @@ package model.dto;
 
 public class TransactionDto {
 	int bno; 
-    String codenumber; // 종목 코드
+    String codename; // 종목 코드
     String transactSelect; //매수-매도
-    String amount; // 갯수
-    String price; // 가격
+    String tamount; // 갯수
+    String tprice; // 가격
     String ttitle ; // 코멘트제목
     String tcontent; //내용
     String tdate;// 거래날짜
 	
+    // 출력 함수를 위해 추가
+    int codenumber; //코드번호
     
 //생성자-------------------------------------------------------    
     public TransactionDto() {}
 
 
-	public TransactionDto(int bno, String codenumber, String transactSelect, String amount, String price, String ttitle,
+	public TransactionDto(int bno, String codename, String transactSelect, String tamount, String tprice, String ttitle,
 			String tcontent, String tdate) {
 		super();
 		this.bno = bno;
-		this.codenumber = codenumber;
+		this.codename = codename;
 		this.transactSelect = transactSelect;
-		this.amount = amount;
-		this.price = price;
+		this.tamount = tamount;
+		this.tprice = tprice;
 		this.ttitle = ttitle;
 		this.tcontent = tcontent;
 		this.tdate = tdate;
 	}
 
-//생성자 - 등록 시 사용
-	public TransactionDto(String codenumber, String transactSelect, String amount, String price, String ttitle,
+
+	
+	
+	
+//메소드---------------------------------------------------------	
+	
+	
+
+	public TransactionDto(String transactSelect, String codename, String tamount, String tprice, String ttitle,
 			String tcontent, String tdate) {
 		super();
-		this.codenumber = codenumber;
 		this.transactSelect = transactSelect;
-		this.amount = amount;
-		this.price = price;
+		this.codename = codename;
+		this.tamount = tamount;
+		this.tprice = tprice;
 		this.ttitle = ttitle;
 		this.tcontent = tcontent;
+		this.tdate = tdate;
+	}
+
+	
+	public TransactionDto(String transactSelect, String codename, String tamount, String tprice, String ttitle,
+			String tdate) {
+		super();
+		this.transactSelect = transactSelect;
+		this.codename = codename;
+		this.tamount = tamount;
+		this.tprice = tprice;
+		this.ttitle = ttitle;
 		this.tdate = tdate;
 	}
 
@@ -52,13 +73,13 @@ public class TransactionDto {
 	}
 
 
-	public String getCodenumber() {
-		return codenumber;
+	public String getCodename() {
+		return codename;
 	}
 
 
-	public void setCodenumber(String codenumber) {
-		this.codenumber = codenumber;
+	public void setCodename(String codename) {
+		this.codename = codename;
 	}
 
 
@@ -72,23 +93,23 @@ public class TransactionDto {
 	}
 
 
-	public String getAmount() {
-		return amount;
+	public String getTamount() {
+		return tamount;
 	}
 
 
-	public void setAmount(String amount) {
-		this.amount = amount;
+	public void setTamount(String tamount) {
+		this.tamount = tamount;
 	}
 
 
-	public String getPrice() {
-		return price;
+	public String getTprice() {
+		return tprice;
 	}
 
 
-	public void setPrice(String price) {
-		this.price = price;
+	public void setTprice(String tprice) {
+		this.tprice = tprice;
 	}
 
 
@@ -122,8 +143,14 @@ public class TransactionDto {
 	}
 
 
-	
+	public int getCodenumber() {
+		return codenumber;
+	}
 
+
+	public void setCodenumber(int codenumber) {
+		this.codenumber = codenumber;
+	}
 
 
 

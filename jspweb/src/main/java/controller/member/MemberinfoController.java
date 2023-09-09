@@ -54,9 +54,9 @@ public class MemberinfoController extends HttpServlet {
     	// 일반input: multi.getParameter("form객체전송시 input name");
     	// 첨부파일input : multi.getFilesystemName();
     	
-    	String mid= multi.getParameter("mid"); System.out.println("mid: "+mid);
-    	String mpwd= multi.getParameter("mpwd");System.out.println("mpwd: "+mpwd);
-    	String memail= multi.getParameter("memail");System.out.println("memail: "+memail);
+    	String mid= multi.getParameter("mid"); System.out.println("아이: "+mid);
+    	String mpwd= multi.getParameter("mpwd");System.out.println("비번: "+mpwd);
+    	String memail= multi.getParameter("memail");System.out.println("메일: "+memail);
     	//String mimg= multi.getParameter("mimg");System.out.println("mimg: "+mimg);
     	String mimg=multi.getFilesystemName("mimg"); System.out.println("mimg: "+mimg);
     	

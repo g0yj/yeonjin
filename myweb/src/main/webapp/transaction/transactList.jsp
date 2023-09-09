@@ -25,16 +25,17 @@
 		
 
 		<div class="box2">
-			<button>전체</button>	
-			<button>매수</button>		
-			<button>매도</button>		
+			<button onclick="all()">전체</button>	
+			<button onclick="buy()">매수</button>		
+			<button onclick="sell()">매도</button>		
 		</div>
 		
 		
 		<div class="box3">
 			<table class="ttable">
+		<!--  
 				<tr>
-					<th>거래</th>
+				<th>거래</th>
 					<th>금액</th>
 					<th>수량</th>
 					<th>제목</th>
@@ -47,8 +48,8 @@
 					<td>제목입니다</td>
 					<td>2023-02-11</td>
 				</tr>
+		-->	
 			</table>
-		
 		</div>
 		
 		
