@@ -9,7 +9,7 @@ function transactPrint(){
 	 $.ajax({
       	url : "/myweb/Transaction",     
      	method : "get",   
-     	data : {},      
+     	data : {type:1},      
       	success : r=>{console.log('전체출력 통신 성공 '+r)
 		
 		let html=`				
@@ -25,12 +25,11 @@ function transactPrint(){
 			html+=`<tr>
 							<td>${t.transactSelect}</td>
 							<td>${t.codename}</td>
-							<td>${t.tamount}</td>
 							<td>${t.tprice}</td>
-							<a href="/myweb/transaction/transactView.jsp?bno=${t.bno}"><td>${t.ttitle}</td></a>
+							<td>${t.tamount}</td>
+							<td><a href="/myweb/transaction/transactView.jsp?bno=${t.bno}">${t.ttitle}</a></td>
 							<td>${t.tdate}</td>
 						</tr>`
-			
 		})			
 	
 					

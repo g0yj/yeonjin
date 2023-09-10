@@ -30,14 +30,7 @@ public class TransactionDto {
 		this.tdate = tdate;
 	}
 
-
-	
-	
-	
-//메소드---------------------------------------------------------	
-	
-	
-
+//글등록
 	public TransactionDto(String transactSelect, String codename, String tamount, String tprice, String ttitle,
 			String tcontent, String tdate) {
 		super();
@@ -50,19 +43,25 @@ public class TransactionDto {
 		this.tdate = tdate;
 	}
 
+
+ //전체출력	
 	
-	public TransactionDto(String transactSelect, String codename, String tamount, String tprice, String ttitle,
+	public TransactionDto(int bno, String codename, String transactSelect, String tamount, String tprice, String ttitle,
 			String tdate) {
 		super();
-		this.transactSelect = transactSelect;
+		this.bno = bno;
 		this.codename = codename;
+		this.transactSelect = transactSelect;
 		this.tamount = tamount;
 		this.tprice = tprice;
 		this.ttitle = ttitle;
 		this.tdate = tdate;
 	}
-
-
+	
+	
+//메소드---------------------------------------------------------	
+	
+	
 	public int getBno() {
 		return bno;
 	}

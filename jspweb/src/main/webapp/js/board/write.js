@@ -21,9 +21,9 @@ function bwrite(){
 		//querySelect(): 객체 타입으로 한개 dom객체
 	let form= document.querySelectorAll('.writeForm')[0] //여러개 중 한개만 가져오면됨.(첫번째배열)
 	//2. form 객체화하기
-	console.log('이거 찍힘?')
+	console.log('jsp에서 form으로 가져옴:'+form)
 	let formData=new FormData(form);
-	console.log(formData);
+	console.log('대용량 전달을 위해 new() :'+formData);
 	
 	//3. ajax로 대용량 form전송 (파일 있는거면 반드시 폼처리 해야서 이동해야됨)
 	  $.ajax({

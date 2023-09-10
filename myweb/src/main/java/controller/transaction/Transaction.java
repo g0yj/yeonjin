@@ -29,14 +29,30 @@ public class Transaction extends HttpServlet {
     
  // 출력 함수=================================================================   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<TransactionDto> result =TransactionDao.getInstance().transactPrint();
-		System.out.println("Dao로부터 리스트 받아옴 객체갰쥬: "+result);
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonArray =mapper.writeValueAsString(result); System.out.println("ObjectMapper객체의 writeValueAsString은 java배열을 json배열로 변환 "+jsonArray);
+		//1. type: 전체출력(1) 개별출력(2)
+		String type=request.getParameter("type");
+		//반복되는 로직은 전역변수로 써서 코드양 줄이기
+		ObjectMapper mapper = new ObjectMapper();//java 객체를 json 객체로 바꿔주는
+		String jsonArray=""; 
+		
+		if(type.equals("1")) {//type(1) : 전체출력이면
+			ArrayList<TransactionDto> result =TransactionDao.getInstance().transactPrint();
+			System.out.println("Dao로부터 리스트 받아옴 객체갰쥬: "+result);
+			jsonArray =mapper.writeValueAsString(result); System.out.println("ObjectMapper객체의 writeValueAsString은 java배열을 json배열로 변환 "+jsonArray);
+
+			
+		}//if 1번 type구분- 전체출력
+		else if(type.equals("2")) {//type(2) : 개별출력
+			int bno=Integer.parseInt(request.getParameter("bno")); System.out.println("전달받은bno: "+bno);
+			TransactionDto result= TransactionDao.getInstance().viewPrint(bno);System.out.println("Dao전달받은 내용: "+result);
+			jsonArray = mapper.writeValueAsString(result);System.out.println("서블릿 출력물 확인: "+jsonArray);
+		}//if 1번 type구분-개별출력
+		
+		//반복되는 로직은 전역변수
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(jsonArray);
 		
-	}
+	}//f()
 	
 	
 // 매수-매도 등록============================================================================

@@ -20,7 +20,7 @@
 			</select>
 			<input onkeyup="sinput()"class="sinput"type="text">
 			<button type="button">검색</button>
-			 <a href="transact.jsp"><button type="button">글쓰기</button></a>
+			 <a href="transactAdd.jsp"><button type="button">글쓰기</button></a>
 		</div>
 		
 

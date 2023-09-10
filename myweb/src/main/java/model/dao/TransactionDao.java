@@ -11,7 +11,7 @@ public class TransactionDao extends Dao{
 	private TransactionDao() {};
 	
 	
-// 등록
+// 등록----------------------------------------------------------
 	public boolean add(TransactionDto dto) {
 		try {
 			String sql="insert into transaction (transactSelect,codename,tamount,tprice,ttitle,tcontent,tdate) values (?,?,?,?,?,?,?);";
@@ -30,16 +30,16 @@ public class TransactionDao extends Dao{
 	}//f()
 	
 	
-//출력
+//출력(전체)------------------------------------------------------------
 	public ArrayList<TransactionDto> transactPrint() {
 		ArrayList<TransactionDto> list= new ArrayList<>();
 		
 		try {
-			String sql = "select transactSelect,codename,tamount,tprice,tdate from transaction";
+			String sql = "select bno, transactSelect,codename,tprice,tamount,ttitle,tdate from transaction";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
-				TransactionDto dto= new TransactionDto(rs.getString("transactSelect"), rs.getString("codename"), rs.getString("tamount"), rs.getString("transactSelect"), rs.getString("tprice"), rs.getString("tdate"));
+				TransactionDto dto = new TransactionDto(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
 				list.add(dto);
 			}//w
 			return list;
@@ -47,7 +47,24 @@ public class TransactionDao extends Dao{
 		} catch (Exception e) {System.out.println("출력Dao오류: "+e);}
 		
 		return null;
+	}//f()
+	
+	
+
+// 출력(개별)------------------------------------------------------
+	public TransactionDto viewPrint(int bno) {
+		try {
+			String sql = "select transactSelect,codename,tamount,tprice,ttitle,tcontent,tdate from transaction where bno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				TransactionDto dto = new TransactionDto(rs.getString("transactSelect"), rs.getString("codename"), rs.getString("tamount"), rs.getString("tprice"), rs.getString("ttitle"), rs.getString("tcontent"), rs.getString("tdate"));
+				System.out.println("개별 출력물 : "+dto);
+				return dto;
+			}
+		} catch (Exception e) {System.out.println("Dao오류: "+e);}
+		return null;
 	}
-	
-	
-}
+
+}//c
