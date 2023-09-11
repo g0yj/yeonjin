@@ -8,9 +8,9 @@ if(loginMid==false){
 
 //2. js 클라이언트[유저] 소켓 만들기
 console.log('채팅창에 들어간 입장 아이디: '+loginMid)
-let clientSocket = new WebSocket(`ws://192.168.17.131/jspweb/serversocket/${loginMid}`)
+let clientSocket = new WebSocket(`ws://192.168.17.131/jspweb/serversocket/${loginMid}`)// ServerSocket.java 의 주소 확인!
 	//- 클라이언트소켓이 생성되었을 때 자동으로 서버소켓에 접속 ->seversocket의 @Onopen 이 켜짐.
-	//- 서버소켓url에 매개변수 전달하기[-주로 식별자 전달] 서버소켓url/데이터1/데이터2/데이터3
+	//- 서버소켓url에 매개변수 전달하기[-주로 식별자 전달] 서버소켓url/데이터1/데이터2/데이터3 
 	//---- 메소드4가지 메소드 자동으로 실행
 		// 1.(자동실행) 클라이언트소켓이 정상적으로 서버소켓에 접속했을 때
 	clientSocket.onopen=e=>{console.log('서버접속성공');}  //기본값은 null임. 안에 커스텀해서 사용하면됨! 열리고 나서 다음 코드(console.log~)~
