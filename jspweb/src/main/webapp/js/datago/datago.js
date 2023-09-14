@@ -20,8 +20,8 @@ function api1(){
 		url : "https://api.odcloud.kr/api/15036759/v1/uddi:577ba1b9-b79f-4865-b31e-a9dc71ce67bc_201909231019?page=1&perPage=45&serviceKey=z427Q0DLkQqM0SDOc1Lz8jPzk%2BKj0ng%2Bvz7h3I8CpVs3T90219bWi2o%2BmStIxJW%2B9lwayA%2FsAT6apxsxuvydQg%3D%3D" ,
 		method : "get" , 
 		data: {} ,
-		success : response => { console.log( response );
-			let data = response.data; console.log( data );
+		success : response => { console.log( '통신시작하자마자 나오는거 뭐임: '+response );
+			let data = response.data; console.log('data라는게 어디서 나옴?: ' +data );
 			console.log( data[0] ); console.log( data[0].업소명 );
 			// 1. 출력할 dom객체 
 			let apiTable1 = document.querySelector('.apiTable1');

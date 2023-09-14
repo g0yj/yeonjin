@@ -48,6 +48,7 @@ public class BoardinfoController extends HttpServlet {
     	int bcno= Integer.parseInt(multi.getParameter("bcno")) ;
     		
     	//작성자(mno)는 입력 받지 않았었음. 유효성 검사로 회원인 사람만 들어오고 있음 (세션에 저장된 상태)
+    										//getAttribute() : 내장객체 속성이름이 name인 속성값
     	int mno=((MemberDto)request.getSession().getAttribute("loginDto")).getMno();
     	//3. 유효성/객체화
     	BoardDto boardDto = new BoardDto(btitle, bcontent, bfile, mno, bcno); System.out.println(boardDto);

@@ -10,7 +10,7 @@
 	<%@include file = "../header.jsp" %>
 
 	<div class="webcontainer">
-	
+<!-- 	
 		<div>
 			<h2> - 카카오지도  - </h2>
 			<div class="detailbox">
@@ -19,7 +19,7 @@
 			<div id="map" style="width:100%;height:500px;"></div>
 		</div>
 		
-		<div>
+		<div> -->
 			<h2> - 안산시 착한가격업소 현황 - </h2>
 			<table class="apiTable1" style="width: 100%; text-align: center;">
 				

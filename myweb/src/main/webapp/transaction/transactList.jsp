@@ -13,7 +13,7 @@
 	<div class="webcontainer">
 		
 		
-		<div class="box1">
+		<div class="box1"><!-- 검색창 -->
 			<select class="search">
 				<option>종목</option>
 				<option>제목</option>
@@ -23,6 +23,7 @@
 			 <a href="transactAdd.jsp"><button type="button">글쓰기</button></a>
 		</div>
 		
+
 
 		<div class="box2">
 			<button onclick="all()">전체</button>	
@@ -54,7 +55,14 @@
 		
 		
 		
-		<div class="box4">페이징</div>
+		<div class="box4"><!-- 페이징 -->
+			<ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ol>
+		
+		</div>
 
 	
 	

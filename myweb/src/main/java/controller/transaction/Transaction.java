@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import model.dao.TransactionDao;
 import model.dto.TransactionDto;
@@ -57,15 +59,23 @@ public class Transaction extends HttpServlet {
 	
 // 매수-매도 등록============================================================================
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
-		//1. 요청
-    	String transactSelect =request.getParameter("transactSelect"); System.out.println("매수냐 매도냐: "+transactSelect);
-    	String codename = request.getParameter("codename"); System.out.println("종목코드 "+codename);
-		String tamount= request.getParameter("tamount"); System.out.println("수량: "+tamount);
-		String tprice= request.getParameter("tprice"); System.out.println("가격: "+tprice);
-		String tdate= request.getParameter("tdate"); System.out.println("날짜: "+tdate);
-		String ttitle= request.getParameter("ttitle"); System.out.println("제목: "+ttitle);
-		String tcontent= request.getParameter("tcontent"); System.out.println("내용: "+tcontent);
+		
+		MultipartRequest multi= new MultipartRequest(
+									request, //요청방식 
+									request.getServletContext().getRealPath("/upload/transaction"),//저장경로
+									1024*1024*1024,//업로드허용용량
+									"UTF-8",//인코딩타입
+									new DefaultFileRenamePolicy()//제목 자동 변경
+									);
+		System.out.println(request.getServletContext().getRealPath("/board/transaction"));
+		
+    	String transactSelect =multi.getParameter("transactSelect"); System.out.println("매수냐 매도냐: "+transactSelect);
+    	String codename = multi.getParameter("codename"); System.out.println("종목코드 "+codename);
+		String tamount= multi.getParameter("tamount"); System.out.println("수량: "+tamount);
+		String tprice= multi.getParameter("tprice"); System.out.println("가격: "+tprice);
+		String tdate= multi.getParameter("tdate"); System.out.println("날짜: "+tdate);
+		String ttitle= multi.getParameter("ttitle"); System.out.println("제목: "+ttitle);
+		String tcontent= multi.getParameter("tcontent"); System.out.println("내용: "+tcontent);
 		//2. 객체화
 		TransactionDto dto = new TransactionDto(transactSelect, codename, tamount, tprice, ttitle, tcontent, tdate);
 		//3. dao

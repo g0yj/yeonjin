@@ -26,7 +26,7 @@ function add(){
 	  $.ajax({
         url : "/myweb/Transaction",     
         method : "post",   
-        data : FormData, 
+        data : transactData, 
        contentType:false,
     	processData:false,
     
