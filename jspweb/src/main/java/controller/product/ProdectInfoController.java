@@ -17,6 +17,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import model.dao.productDao;
 import model.dto.MemberDto;
 import model.dto.productDto;
@@ -114,10 +116,37 @@ public class ProdectInfoController extends HttpServlet {
     //console 찍어보면 ---> []는 LIST , {}는 MAP
     
     
-    //2. 제품 조회
+//2. 제품 조회===============================================================================
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+    	String type=request.getParameter("type");
+    	String json="";
+    	ObjectMapper mapper = new ObjectMapper();
+    	
+    	if(type.equals("findByTop")) {
+    		int count= Integer.parseInt(request.getParameter("count"));
+    		List<productDto> result= productDao.getInstance().findByTop(count);
+    		json= mapper.writeValueAsString(result);
+    	}
+    	else if(type.equals("findByLatLng")) {
+    		String east =request.getParameter("east");
+    		String west =request.getParameter("west");
+    		String south =request.getParameter("south");
+    		String north =request.getParameter("north");
+    		List<productDto> result= productDao.getInstance().findByLatLng(east, west, south, north);
+    		json= mapper.writeValueAsString(result);
+    	}
+    	else if(type.equals("findByPno")) {
+    		int pno = Integer.parseInt(request.getParameter("pno"));
+    		List<productDto> result= productDao.getInstance().findByPno(pno);
+    		json= mapper.writeValueAsString(result);
+    	}
+    	else if(type.equals("findByAll")) {
+    		List<productDto> result= productDao.getInstance().findByAll();
+    		json= mapper.writeValueAsString(result);
+    	}
     
+    	response.setContentType("application/json;charset=UTF-8");
+    	response.getWriter().print(json);
     }
 
 	
