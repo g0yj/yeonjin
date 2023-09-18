@@ -118,12 +118,12 @@ public class ProdectInfoController extends HttpServlet {
     
 //2. 제품 조회===============================================================================
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String type=request.getParameter("type");
+    	String type=request.getParameter("type");System.out.println("타입: "+type);
     	String json="";
-    	ObjectMapper mapper = new ObjectMapper();
+    	ObjectMapper mapper = new ObjectMapper(); System.out.println("잭슨사영: "+ mapper);
     	
     	if(type.equals("findByTop")) {
-    		int count= Integer.parseInt(request.getParameter("count"));
+    		int count= Integer.parseInt(request.getParameter("count")); System.out.println("인수 카운트: "+count);
     		List<productDto> result= productDao.getInstance().findByTop(count);
     		json= mapper.writeValueAsString(result);
     	}
@@ -137,7 +137,7 @@ public class ProdectInfoController extends HttpServlet {
     	}
     	else if(type.equals("findByPno")) {
     		int pno = Integer.parseInt(request.getParameter("pno"));
-    		List<productDto> result= productDao.getInstance().findByPno(pno);
+    		productDto result= productDao.getInstance().findByPno(pno);
     		json= mapper.writeValueAsString(result);
     	}
     	else if(type.equals("findByAll")) {
