@@ -5,10 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link href="/myweb/css/footer.css">
 </head>
 <body>
-
-	<script scr="/myweb/js/footer.js" type="text/javascript"></script>
+	<%@include file="/header.jsp" %>
+	
+	<div class="webcontainer">
+		<h3>전체상품페이지</h3>
+		
+	<!--  -->
+	
+	
+	
+	</div>
+	<script src="../js/product/productList.js"type="text/javascript"></script>
 </body>
 </html>

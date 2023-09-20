@@ -136,8 +136,10 @@ public class ProdectInfoController extends HttpServlet {
     		json= mapper.writeValueAsString(result);
     	}
     	else if(type.equals("findByPno")) {
-    		int pno = Integer.parseInt(request.getParameter("pno"));
+    		int pno = Integer.parseInt(request.getParameter("pno"));System.out.println("들어온pno: "+pno);
     		productDto result= productDao.getInstance().findByPno(pno);
+    		System.out.println("출력 관련 dto 리스트: "+result);
+    		System.out.println("출력 관련 필요한 모든 정보: 객체임? 배열임? "+result);
     		json= mapper.writeValueAsString(result);
     	}
     	else if(type.equals("findByAll")) {

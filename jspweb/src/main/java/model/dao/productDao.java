@@ -65,9 +65,11 @@ public class productDao extends Dao{
 		try {
 			Map< Integer , String > imglist = new HashMap<>(); // 제품별 여러개 이미지 
 			String sql = "select * from productimg where pno = "+pno; 
-			PreparedStatement ps = conn.prepareStatement(sql);// * 다른 함수에서 먼저 사용중인 rs 인터페이스 객체 가 사용중 이므로 [ while ] 중복 사용불가능  // 해결방안 새로운 rs 만들기 ( PreparedStatement , ResultSet 2개 사용 )
+			PreparedStatement ps = conn.prepareStatement(sql);// * 다른 함수에서 먼저 사용중인 rs 인터페이스 객체 가 사용중 이므로 [ while ] 중복 사용불가능  // 해결방안 새로운 rs 만들기 ( PreparedStatement , ResultSet 2개 사용 *PS까진 새로 안 만들어도됨 )
 			ResultSet rs =  ps.executeQuery();
-			while(rs.next() ) { imglist.put( rs.getInt("pimgno"), rs.getString("pimg") ); } return imglist;
+			while(rs.next() ) { imglist.put( rs.getInt("pimgno"), rs.getString("pimg") ); 
+			System.out.println("사진 여러개 들어가 있니"+imglist);} 
+			return imglist;
 		}catch (Exception e) { System.out.println(e); } return null;
 	}
 	
@@ -100,61 +102,80 @@ public class productDao extends Dao{
 	}
 	
 	//1. n개 제품들을 최신순으로 출력
-	public List<productDto> findByTop(int count){
-		List<productDto> list = new ArrayList<>();
-		try { 
-			String sql = "select * from product order by pdate desc limit "+count;
-			ps = conn.prepareStatement(sql); 
-			rs = ps.executeQuery();
-			while( rs.next() ) {  list.add( findByPno( rs.getInt("pno") ) ); 	} return list;
-		} catch (Exception e) { System.out.println(e); } return null; 
-	}
-					//*위에서 먼저 사용중인 rs 인터페이스가 사용중이므로 [while] 중복 사용 불가능
-					//해결방안: 새로운 rs 만들기 (PreparedStatement ,ResultSet 2개사용)
-			/*	PreparedStatement ps2= conn.prepareStatement(sql);
-				ResultSet rs2=ps2.executeQuery();
-				while(rs2.next()) {
-					imglist.put(rs2.getInt("pimgno"),rs2.getString("pimg"));
-					}
-				
-				productDto productDto=new productDto(
-												rs.getInt("pcno"), 
-												rs.getString("pcname"), 
-												rs.getInt("pno"), 
-												rs.getString("pname"), 
-												rs.getString("pcontent"), 
-												rs.getInt("pprice"), 
-												rs.getString("pstate"), 
-												rs.getString("pdate"), 
-												rs.getString("plat"), 
-												rs.getString("plng"), 
-												rs.getInt("mno"), 
-												imglist, 
-												rs.getString("mid"));
-				
-			}//w
-		} catch (Exception e) {System.out.println("Dao오류: "+e);}
-		
-		
-		
-		return null;}
 	
-	*/
+	 public List<productDto> findByTop(int count){ 
+		 List<productDto> list = new ArrayList<>(); 
+		 try { 
+			 String sql ="select * from product order by pdate desc limit "+count; 
+			 ps =conn.prepareStatement(sql); 
+			 rs = ps.executeQuery(); 
+			 while( rs.next() ) {
+				 list.add( findByPno( rs.getInt("pno") ) ); 
+			 } return list; 
+			 } catch (Exception e) { System.out.println(e); } 
+		 return null; }
+	 
+		
+	/*
+	  public List<productDto> findByTop(int count){ 
+	  	List<productDto> list = new ArrayList<>(); 
+	  	try {
+	  	 String sql ="select * from product order by pdate desc limit "+count; 
+	  	 ps = conn.prepareStatement(sql); 
+	  	 rs = ps.executeQuery(); 
+	  	 while(rs.next()) { 
+	  	 	//1.담아 줄 list 필요. (전역변수선언) //2. 넣어줄 것
+	  		//3. 이미지테이블에서 제품의 해당하는 (여러개)이미지를 출력해서 map객체에 담기 
+	  		 Map<Integer, String> imglist=new HashMap<>();
+	  		sql="select*from productimg where pno= "+rs.getInt("pno"); 
+	  		//* 위에서 사용중인 rs가있기 때문에 새로운 RS가 필요 
+	  		PreparedStatement ps2= conn.prepareStatement(sql);
+	  		ResultSet rs2=ps2.executeQuery(); 
+	  		while(rs2.next()){
+	  			imglist.put(rs2.getInt("pimgno"), rs.getString("pimg"));
+	  			} 
+	  
+	  //아래는 2번 내용임!! null 해결을 위해 3번으로 올라갔다가 내려와서 null의 값을 수정함. 
+	  productDto dto = new productDto( rs.getInt("pcno"), //() 안에 인덱스번호로 넣어도 되지만 헷갈리니까 필드로 넣음. 가능
+	  									rs.getString("pcname"), 
+	  									rs.getInt("pno"), 
+	  									rs.getString("pname"),
+	  									rs.getString("pcontent"), 
+	  									rs.getInt("pprice"), 
+	  									rs.getString("pstate"),
+	  									rs.getString("pdate"), 
+	  									rs.getString("plat"), 
+	  									rs.getString("plng"),
+	  									rs.getInt("mno"), 
+	  									imglist, //null->imglist로 바뀜! 
+	  									rs.getString("mid"));
+	  			list.add(dto); } 
+	  		return list; } 
+	  	catch (Exception e) { System.out.println(e);} 
+	  	return null; }
+	 
+	 
+	 */
+	
+	
+		
+	
+
 		//2. 현재 카카오 지도 내 보고 있는 동서남북 기준 내 제품들을 출력
 	public List<productDto> findByLatLng(String east,String west,String south,String north){
 		try { 	// 제품의 경도가 '동쪽'보다 작고 경도가'서쪽'크고 위도가 '남쪽'보다 작고 '북쪽' 크다
+			System.out.println("동: "+east+"서 "+west+"남:"+south+"북"+north);
 			List<productDto> list = new ArrayList<>();
-			String sql = "select*from product where plat>=? and plat<=? and plan>=? and plan<=? order by pdate";
+			String sql = "select*from product where plat>=? and plat<=? and plng>=? and plng<=? order by pdate";
 			ps = conn.prepareStatement(sql); 
-			
-			ps.setString(1, east);
-			ps.setString(2, west);
-			ps.setString(3, south);
-			ps.setString(4, north);
+			ps.setString(4, east);
+			ps.setString(3, west);
+			ps.setString(1, south);
+			ps.setString(2, north);
 			
 			rs = ps.executeQuery();
 			while( rs.next() ) {  list.add( findByPno( rs.getInt("pno") ) ) ;	} return list;
-		} catch (Exception e) { System.out.println(e); } return null; 
+		} catch (Exception e) { System.out.println("findByLatLng 다오"+e); } return null; 
 	}	
 	
 		//4. 모든 제품을 출력
@@ -166,15 +187,57 @@ public class productDao extends Dao{
 		} catch (Exception e) { System.out.println(e); } return null; 
 	}
 	
-//3. 제품 개별 조회------------------------------------------------------------------------------------
+//3. 제품 찜하기 등록(=찜하기상태가아닐때==조건에따른 레코드가 없을 때)/취소(=찜하기상태일때)------------------------------------------------------------------------------------
+	public boolean setWish(int mno, int pno) {
+		try {					// mno,pno 모두 쓰기 때문에 필드명 생략 가능
+			
+			
+			String sql=getWish(mno, pno)? 
+					"delete from pwishlist where mno = ? and pno = ?":
+					"insert into pwishlist values( ? , ? )";
+			System.out.println("sql확인" +sql);
+			ps= conn.prepareStatement(sql);
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			int count=ps.executeUpdate();
+			if(count==1) {return true;}
+		} catch (Exception e) {System.out.println("setWish() 오류: "+e);}
+		return false;
+	}//f()
 	
 	
-//4. 제품 수정----------------------------------------------------------------------------------------
+
 	
+//4. 제품 찜하기 상태 출력-------------------------------------------------------------------------------------
+	public boolean getWish(int mno, int pno) {
+		try {
+			System.out.println("mno : "+mno);
+			System.out.println("pno : "+pno);
+			String sql= "select*from pwishlist where mno=? and pno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, mno);
+			ps.setInt(2, pno);
+			// 3번함수에서 호출 받는 함수받는 거였음. 다오가 다오 부를때 이미 끝나고 3번 함수에 rs가 실행되므로 굳이 ResultSet rs 새롭게 선언할 필요 없음
+			rs=ps.executeQuery();
+			if(rs.next()) {return true;}
+		} catch (Exception e) {System.out.println("getWish(): "+e);}
+		return false;
+	}
 	
-//5. 제품 삭제-------------------------------------------------------------------------------------
+//5. 현재 로그인된 회원의 찜한 제품 정보를 출력
+	public List<productDto> getWishProdutList(int mno) {
+		List<productDto> list= new ArrayList<>();
+		try {//현재 회원이 찜한 제품번호 찾기
+			String sql="select pno from pwishlist where mno= "+mno;//현재 회원의 찜하기 제품번호 목록 찾기
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			//현재 회원이 찜한 제품번호의 레코드 반환
+			while(rs.next()) { // 찾은 제품번호 하나씩 findByPno() 함수에 전달
+				list.add( findByPno( rs.getInt("pno") ) ) ;	
+			}
+			return list;
+		} catch (Exception e) {System.out.println("");}
+		return null;
+	}
 	
-	
-	
-	
-}
+}//c

@@ -5,10 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link href="/myweb/css/footer.css">
 </head>
 <body>
+	<h2>판매상품</h2>
 
-	<script scr="/myweb/js/footer.js" type="text/javascript"></script>
 </body>
 </html>
