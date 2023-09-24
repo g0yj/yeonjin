@@ -22,7 +22,7 @@ import model.dto.MsgDto;
 
 @ServerEndpoint("/serversocket/{mid}") //서버소켓 url , 아래 주석 2번 방법!!
 public class ServerSocket {
-	//0. 접속된 클라이언트소켓들의 저장소
+	//0. 접속된 클라이언트소켓들의 저장소[식별을 위해 아이디를 보내기로 했었음. 세션과 아이디를 저장하는 새로운 Dto를 생성]
 	public static List<ClientDto> clientList= new Vector<>(); //로그인상태랑 아이디를 가져올거라 ClientDto 새로 만들었음. 새로고침할때마다 동일한 아이디가 계속 접속되는 걸 방지하기 위해
 	
 	//1. 클라이언트소켓으로부터 접속 받았을 때

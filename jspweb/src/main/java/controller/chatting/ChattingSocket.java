@@ -24,10 +24,12 @@ import javax.websocket.server.ServerEndpoint;
 public class ChattingSocket {
 	// * import javax.websocket.Session;
 	public static ArrayList< Session > 접속명단 = new ArrayList<>();
-	// 1.  // 클라이언트가 서버소켓의 접속했을때 매핑/연결   ( JS에서 new WebSocket 객체 생성될때. 문제없이 접속되면  )
+	// 1. 클라이언트가 서버소켓의 접속했을때 매핑/연결   ( JS에서 new WebSocket 객체 생성될때. 문제없이 접속되면  )
 	@OnOpen
 	public void onOpen( Session session ) { 
-		System.out.println("클라이언트소켓 접속 :" + session );System.out.println(session.getId() );System.out.println(session.getRequestURI() );
+		System.out.println("클라이언트소켓 접속 :" + session ); //session 저장소를 의미함. 
+		System.out.println(session.getId() );
+		System.out.println(session.getRequestURI() );
 		// * 들어온 클라이언소켓들을 서버소켓에 저장.. 
 		접속명단.add(session); // 접속된 소켓들의 명단을 가지고 있어야 추후에 통신 가능.
 		System.out.println( "접속명단 : " + 접속명단 );
@@ -52,7 +54,7 @@ public class ChattingSocket {
 			catch (IOException e) { System.out.println(e); }
 			// s : 접속명단에 있는 클라이언트소켓 중 하나 
 				// .getBasicRemote() : 메시지 전송을 메소드 제공 
-					// .sendText : 메시지를 String타입으로 전송 [ !예외처리 필수 ] 
+					// .sendText : 메시지를 String타입으로 전송 [ !예외처리 필수 , forEach() 사용하면 return이 안됨 ] 
 		});
 	} // 클라이언트소켓으로부터 메시지를 받았을떼.
 	// 4. 
