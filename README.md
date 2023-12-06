@@ -1,2 +1,2 @@
 # yeonjin
-백엔드 과정
+java 이론 + jsp
